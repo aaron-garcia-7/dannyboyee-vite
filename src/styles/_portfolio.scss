@@ -1,0 +1,36 @@
+.portfolio-panel {
+    padding-top: calc($body-padding + $button-height);
+    ol {
+        list-style: none;
+        li {
+            border-top: 1px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            &:first-of-type {
+                border: none;
+            }
+
+            .index-name {
+                .index {                    
+                    display: inline-block;
+                    width: 2rem;
+                    margin-right: 0.6rem;
+                }
+            }
+        }
+        &:hover {
+            li {
+                opacity: 0.4;
+                &:hover {
+                    opacity: 1;
+                    border-top: 1px solid black;
+                }
+                &:first-of-type {
+                    &:hover {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

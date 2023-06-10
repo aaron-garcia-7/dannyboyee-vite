@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Satoshi';
+    src: url(../fonts/Satoshi-Variable.woff2);
+}
+
+$satoshi: 'Satoshi', sans-serif;
+
+$large-text: calc(0.8rem + 2vw);
+$small-text: calc(0.8rem + 0.2vw);
+
+$body-padding: calc(2rem + 2vw);
+$button-width: calc(6rem + 4vw);
+$button-height: calc(1.6rem + 0.6vw);
+
+$test: 1px dashed grey;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $satoshi;
+    // cursor: none;
+}
+
+body {
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    min-height: 36rem;
+    display: flex;
+}
+
+nav {
+    // background: lightblue;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background: none;
+    border: none;
+    border-top: 1px solid black;
+    cursor: pointer;
+    width: $button-width;
+    height: $button-height;
+    text-align: left;
+    font-size: $small-text;
+    font-weight: 500;
+}
+
+aside {
+    position: absolute;
+    top: 50%;
+    right: 4rem;
+    transform: translate(-20%, -50%);
+}
+
+h1 {
+    font-size: $large-text;
+    font-weight: 200;
+}
+h2, p, li {
+    font-size: $small-text;
+    font-weight: 500;
+}
+
+.app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: $body-padding;
+    // background: lightblue;
+    // cursor: none;
+}
+
+.nav-links {
+    .nav-link-item {
+        height: $button-height;
+        .nav-button {
+            display: flex;
+        }
+    }
+}
+
+.logo-container {
+    position: fixed;
+    bottom: $body-padding;
+    right: $body-padding;
+    img {
+        width: calc(1rem + 1vw);
+    }
+}
+
+.panel {
+    background: white;
+    // background: lightblue;
+    // position: absolute;
+    position: fixed;
+    overflow: scroll;
+    // overscroll-behavior: contain;
+    top: 0;
+    padding-top: $body-padding;
+    left: calc($button-width + $body-padding + 2.6rem);
+    width: calc(100% - ($button-width + $body-padding + 2.6rem));
+    height: 100%;
+    // min-height: 36rem;
+    z-index: 1;
+    transform: translate(0, -1%);
+    animation: open-panel 0.16s ease forwards;
+
+    @keyframes open-panel {
+        to {
+            transform: translate(0, 0);
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background: white;
+        width: 40%;
+        height: 100%;
+        z-index: 2;
+        animation: show-panel-content 0.16s ease forwards;
+    }
+    @keyframes show-panel-content {
+        to {
+            height: 0;
+        }
+    }
+
+    .content {
+        position: relative;
+        border-top: 1px solid black;
+        padding-top: 0.2rem;
+        padding-bottom: 1.8rem;
+        // width: calc(16rem + 6vw);
+        width: calc(24rem + 6vw);
+        cursor: default;
+        p,
+        h2,
+        ul {
+            cursor: text;
+        }
+    }
+}
+
+.mouse-div {
+    // border: 2px dashed coral;
+    // padding: 2rem;
+    width: 86px;
+    pointer-events: none;
+    // cursor: none;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    color: white;
+    // background: white;
+    mix-blend-mode: exclusion;
+    // display: none;
+}
