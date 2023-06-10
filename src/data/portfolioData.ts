@@ -1,6 +1,9 @@
+import video1 from '../assets/portrait.webp';
+
 interface Project {
     name: string,
-    year: number
+    year: number,
+    video?: string,
 }
 
 const portfolioData: Project[] = [
@@ -11,6 +14,7 @@ const portfolioData: Project[] = [
     {
         name: 'Join Sunder',
         year: 2023,
+        video: video1,
     },
     {
         name: 'Enzy',
