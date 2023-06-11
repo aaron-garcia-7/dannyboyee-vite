@@ -3,6 +3,12 @@
     padding-bottom: calc($body-padding);
     display: flex;
     align-items: flex-end;
+    transform: translate(0, 1%); // For animation below
+    &::before {
+        top: 0;
+    }
+
+
     .contact-content {
         border: none;
 

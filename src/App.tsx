@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+// import { useState } from 'react';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
 
@@ -34,6 +35,7 @@ function App() {
   //     about: buttonClass.contains('about-button') ? !prev.about : prev.about,
   //     portfolio: buttonClass.contains('portfolio-button') ? !prev.portfolio : prev.portfolio,
   //     references: buttonClass.contains('references-button') ? !prev.references : prev.references,
+  //     contact: buttonClass.contains('contact-button') ? !prev.contact : prev.contact,
   //   }));
   // }
 
@@ -96,22 +98,21 @@ function App() {
   const closeNav = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     const navContent = document.querySelector('.nav-links');
+    const contactButton = document.querySelector('.contact-button');
     const isContentClicked = target.classList.contains('content') || target.closest('.content');
 
-
-    if (!navContent?.contains(target) && !isContentClicked) {
-      setNavState(prev => ({
-        ...prev,
-        nav: false,
-        about: false,
-        portfolio: false,
-        references: false,
-        contact: false,
-      }))
+    if (!navContent?.contains(target) && !contactButton?.isSameNode(target) && !isContentClicked) {
+        setNavState(prev => ({
+            ...prev,
+            nav: false,
+            about: false,
+            portfolio: false,
+            references: false,
+            contact: false,
+        }))
     }
+}
 
-    console.log('closing the nav')
-  }
 
   const [showMouseDiv, setShowMouseDiv] = useState(false);
 
@@ -122,6 +123,7 @@ function App() {
       document.body.removeEventListener('click', closeNav);
     }
   }, [closeNav, showMouseDiv]);
+
 
   const inactiveStyle: React.CSSProperties = {
     opacity: 0.2,

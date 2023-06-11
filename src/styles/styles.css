@@ -239,6 +239,10 @@ h2, p, li {
   padding-bottom: calc(2rem + 2vw);
   display: flex;
   align-items: flex-end;
+  transform: translate(0, 1%);
+}
+.contact-panel::before {
+  top: 0;
 }
 .contact-panel .contact-content {
   border: none;
