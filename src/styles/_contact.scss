@@ -1,3 +1,30 @@
 .contact-panel {
-    padding-top: calc($body-padding + ($button-height * 2));
+    // padding-bottom: calc($body-padding + ($button-height * 2));
+    padding-bottom: calc($body-padding);
+    display: flex;
+    align-items: flex-end;
+    .contact-content {
+        border: none;
+
+        &-block {
+            display: flex;
+            gap: calc($gap / 2);
+            margin-top: 24px;
+        }
+
+        &-method {
+            // background: lightblue;
+            border-top: 1px solid black;
+            width: calc(6rem + 6vw);
+        }
+        
+        &-results {
+            border-top: 1px solid black;
+            width: calc(8rem + 8vw);
+
+            a {
+                color: black;
+            }
+        }
+    }
 }

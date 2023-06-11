@@ -1,4 +1,4 @@
-import video1 from '../assets/portrait.webp';
+import video1 from '../assets/joinsunder.mp4';
 
 interface Project {
     name: string,

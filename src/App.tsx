@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
+
 import About from './components/About';
 import Portfolio from './components/Portfolio';
 import References from './components/References';
-import MouseDiv from './components/MouseDiv';
 import Contact from './components/Contact';
+import MouseDiv from './components/MouseDiv';
 
 interface NavState {
   nav: boolean;
@@ -21,7 +22,7 @@ function App() {
     about: false,
     portfolio: false,
     references: false,
-    contact: false,
+    contact: false
   })
 
   // const handleNav = ({target}: any) => {
@@ -55,7 +56,7 @@ function App() {
         about: false,
         portfolio: !prev.portfolio,
         references: false,
-        contact: false,
+        contact: false
       }))
     } else if (buttonClass.contains('references-button')) {
       setNavState(prev => ({
@@ -64,7 +65,7 @@ function App() {
         about: false,
         portfolio: false,
         references: !prev.references,
-        contact: false,
+        contact: false
       }))
     } else if (buttonClass.contains('contact-button')) {
       setNavState(prev => ({
@@ -73,8 +74,10 @@ function App() {
         about: false,
         portfolio: false,
         references: false,
-        contact: !prev.contact,
+        contact: !prev.contact
       }))
+      console.log('clicked contact button')
+      console.log(navState)
     } 
 
     if (navState.nav === true) {
@@ -88,8 +91,6 @@ function App() {
         nav: true,
       }));
     }
-
-    console.log(navState.nav)
   }
 
   const closeNav = (event: MouseEvent) => {
@@ -108,6 +109,8 @@ function App() {
         contact: false,
       }))
     }
+
+    console.log('closing the nav')
   }
 
   const [showMouseDiv, setShowMouseDiv] = useState(false);
@@ -120,7 +123,7 @@ function App() {
     }
   }, [closeNav, showMouseDiv]);
 
-  const activeButtonStyle: React.CSSProperties = {
+  const inactiveStyle: React.CSSProperties = {
     opacity: 0.2,
   }
 
@@ -134,7 +137,7 @@ function App() {
         <ul className='nav-links' onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
             <button 
-            style={navState.portfolio || navState.references || navState.contact ? activeButtonStyle : undefined} 
+            style={navState.portfolio || navState.references || navState.contact ? inactiveStyle : undefined} 
             className={'nav-button about-button'} 
             onClick={(e) => handleNav(e)}>
               About {navState.about ? '-' : '+'}
@@ -142,7 +145,7 @@ function App() {
           </li>
           <li className='nav-link-item'>
             <button 
-            style={navState.about || navState.references || navState.contact ? activeButtonStyle : undefined} 
+            style={navState.about || navState.references || navState.contact ? inactiveStyle : undefined} 
             className={'nav-button portfolio-button'} 
             onClick={(e) => handleNav(e)}>
               Portfolio {navState.portfolio ? '-' : '+'}
@@ -150,7 +153,7 @@ function App() {
           </li>
           <li className='nav-link-item'>
             <button 
-            style={navState.about || navState.portfolio || navState.contact ? activeButtonStyle : undefined} 
+            style={navState.about || navState.portfolio || navState.contact ? inactiveStyle : undefined} 
             className={'nav-button references-button'} 
             onClick={(e) => handleNav(e)}>
               References {navState.references ? '-' : '+'}
@@ -158,7 +161,7 @@ function App() {
           </li>
         </ul>
         <button 
-          style={navState.about || navState.portfolio || navState.references ? activeButtonStyle : undefined}
+          style={navState.about || navState.portfolio || navState.references ? inactiveStyle : undefined}
           className={'nav-button contact-button'}
           onClick={(e) => handleNav(e)}>
             Contact {navState.contact ? '-' : '+'}
@@ -166,7 +169,7 @@ function App() {
       </nav>
       {navState.about && <About setShowMouseDiv={setShowMouseDiv} />}
       {navState.portfolio && <Portfolio setShowMouseDiv={setShowMouseDiv} />}
-      {navState.references && <References />}
+      {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
       <aside>
         <h1>

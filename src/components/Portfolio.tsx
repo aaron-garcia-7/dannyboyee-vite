@@ -1,6 +1,4 @@
 import portfolioData from "../data/portfolioData"
-// import video1 from '../assets/joinsunder.mp4';
-
 
 type ContentProps = {
     showMouseDiv?: boolean;
@@ -10,12 +8,16 @@ type ContentProps = {
 const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
     const data = portfolioData.map((obj, index) => (
         <li key={index}>
-            <h1>Test Branch 1</h1>
+          <div className="text-data">
             <span className="index-name">
               <span className="index">{`0${index + 1}`}</span>
               {obj.name}
             </span>
             <span className="project-year">{obj.year}</span>
+          </div>
+          <div className="video-data">
+            <video src={obj.video} autoPlay loop></video>
+          </div>
         </li>
     ))
 

@@ -5,10 +5,15 @@ type ContentProps = {
 const Contact = ({ setShowMouseDiv }: ContentProps) => {
   return (
     <div className="panel contact-panel">
-        <div className="content about-content-paragraph" onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
-            <p>After being a passionate cretaive for almost a decade, I have worked with many notable companies on amazing projects around the world.</p>
-            <br />
-            <p>My goal in life is to always be embracing trends, setting the creative standard, and always leaving an impact.</p>
+        <div className="content contact-content" onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
+            <div className="contact-content-block">
+              <p className="contact-content-method">Details</p>
+              <p className="contact-content-results">Contact: Daniel Garcia <br /><a href="mailto:dancrx555@gmail.com">dancrx555@gmail.com</a></p>
+            </div>
+            <div className="contact-content-block">
+              <p className="contact-content-method">Social</p>
+              <p className="contact-content-results"><a href="#">Instagram</a> <a href="#">LinkedIn</a></p>
+            </div>
         </div>
     </div>
   )
