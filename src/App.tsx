@@ -26,75 +26,21 @@ function App() {
     contact: false
   })
 
-  // const handleNav = ({target}: any) => {
-  //   const buttonClass = target.classList;
-  
-  //   setNavState(prev => ({
-  //     ...prev,
-  //     nav: !prev.nav,
-  //     about: buttonClass.contains('about-button') ? !prev.about : prev.about,
-  //     portfolio: buttonClass.contains('portfolio-button') ? !prev.portfolio : prev.portfolio,
-  //     references: buttonClass.contains('references-button') ? !prev.references : prev.references,
-  //     contact: buttonClass.contains('contact-button') ? !prev.contact : prev.contact,
-  //   }));
-  // }
-
   const handleNav = ({target}: any) => {
     const buttonClass = target.classList;
   
-    if (buttonClass.contains('about-button')) {
-      setNavState(prev => ({
-        ...prev,
-        nav: true,
-        about: !prev.about,
-        portfolio: false,
-        references: false,
-        contact: false
-      }))
-    } else if (buttonClass.contains('portfolio-button')) {
-      setNavState(prev => ({
-        ...prev,
-        nav: true,
-        about: false,
-        portfolio: !prev.portfolio,
-        references: false,
-        contact: false
-      }))
-    } else if (buttonClass.contains('references-button')) {
-      setNavState(prev => ({
-        ...prev,
-        nav: true,
-        about: false,
-        portfolio: false,
-        references: !prev.references,
-        contact: false
-      }))
-    } else if (buttonClass.contains('contact-button')) {
-      setNavState(prev => ({
-        ...prev,
-        nav: true,
-        about: false,
-        portfolio: false,
-        references: false,
-        contact: !prev.contact
-      }))
-      console.log('clicked contact button')
-      console.log(navState)
-    } 
-
-    if (navState.nav === true) {
-      setNavState(prev => ({
-        ...prev,
-        nav: false,
-      }));
-    } else {
-      setNavState(prev => ({
-        ...prev,
-        nav: true,
-      }));
-    }
+    setNavState(prev => ({
+      nav: prev.about && buttonClass.contains('about-button') ||
+           prev.portfolio && buttonClass.contains('portfolio-button') ||
+           prev.references && buttonClass.contains('references-button') ||
+           prev.contact && buttonClass.contains('contact-button') ? !prev.nav : true,
+      about: buttonClass.contains('about-button') ? !prev.about : false,
+      portfolio: buttonClass.contains('portfolio-button') ? !prev.portfolio : false,
+      references: buttonClass.contains('references-button') ? !prev.references : false,
+      contact: buttonClass.contains('contact-button') ? !prev.contact : false,
+    }));
   }
-
+  
   const closeNav = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     const navContent = document.querySelector('.nav-links');
@@ -111,8 +57,7 @@ function App() {
             contact: false,
         }))
     }
-}
-
+  }
 
   const [showMouseDiv, setShowMouseDiv] = useState(false);
 
@@ -165,6 +110,8 @@ function App() {
         <button 
           style={navState.about || navState.portfolio || navState.references ? inactiveStyle : undefined}
           className={'nav-button contact-button'}
+          onMouseEnter={() => setShowMouseDiv(false)} 
+          onMouseLeave={() => setShowMouseDiv(true)}
           onClick={(e) => handleNav(e)}>
             Contact {navState.contact ? '-' : '+'}
         </button>
@@ -180,11 +127,9 @@ function App() {
           Always Leaving an Impact.<br />
         </h1>
       </aside>
-      {!navState.nav && (
-        <figure className='logo-container'>
-          <img src={logo} alt="Logo" />
-        </figure>
-      )}
+      <figure className='logo-container'>
+        <img src={logo} alt="Logo" />
+      </figure>
       {navState.nav && showMouseDiv && <MouseDiv />}
     </div>
   )

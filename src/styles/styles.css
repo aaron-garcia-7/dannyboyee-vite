@@ -180,29 +180,32 @@ h2, p, li {
   gap: 3.6rem;
   padding-top: calc(2rem + 2vw + 1.6rem + 0.6vw);
 }
-.portfolio-panel ol {
+.portfolio-panel .content {
+  height: 1%;
+}
+.portfolio-panel .content ol {
   list-style: none;
 }
-.portfolio-panel ol li {
+.portfolio-panel .content ol li {
   position: relative;
   border-top: 1px solid transparent;
   display: flex;
   justify-content: space-between;
 }
-.portfolio-panel ol li:first-of-type {
+.portfolio-panel .content ol li:first-of-type {
   border: none;
 }
-.portfolio-panel ol li .text-data {
+.portfolio-panel .content ol li .text-data {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.portfolio-panel ol li .text-data .index-name .index {
+.portfolio-panel .content ol li .text-data .index-name .index {
   display: inline-block;
   width: 2rem;
   margin-right: 0.6rem;
 }
-.portfolio-panel ol li .video-data {
+.portfolio-panel .content ol li .video-data {
   position: absolute;
   right: 0;
   transform: translate(calc(100% + 3.6rem), 0);
@@ -213,21 +216,21 @@ h2, p, li {
   opacity: 0;
   pointer-events: none;
 }
-.portfolio-panel ol li .video-data video {
+.portfolio-panel .content ol li .video-data video {
   width: 100%;
   height: 100%;
 }
-.portfolio-panel ol:hover li {
+.portfolio-panel .content ol:hover li {
   opacity: 0.4;
 }
-.portfolio-panel ol:hover li:hover {
+.portfolio-panel .content ol:hover li:hover {
   opacity: 1;
   border-top: 1px solid black;
 }
-.portfolio-panel ol:hover li:hover .video-data {
+.portfolio-panel .content ol:hover li:hover .video-data {
   opacity: 1;
 }
-.portfolio-panel ol:hover li:first-of-type:hover {
+.portfolio-panel .content ol:hover li:first-of-type:hover {
   border: none;
 }
 
