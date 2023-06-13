@@ -1,3 +1,26 @@
 .references-panel {
     padding-top: calc($body-padding + ($button-height * 2));
+
+    .reference {
+        display: flex;
+        justify-content: space-between;
+        margin: 2px 0;
+        // & > * {
+        //     border: $test;
+        // }
+
+        &-name {
+            width: 34%;
+        }
+        &-company {
+            width: 52%;
+            text-align: right;
+        }
+    }
+}
+
+@media (max-width: 1220px) {
+    .references-panel {
+        padding-top: calc($body-padding-tablet + ($button-height * 2));
+    }
 }

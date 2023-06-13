@@ -140,6 +140,42 @@ h2, p, li {
   mix-blend-mode: exclusion;
 }
 
+@media (max-width: 1220px) {
+  .app {
+    padding: calc(1.2rem + 1.2vw);
+  }
+  .logo-container {
+    bottom: calc(1.2rem + 1.2vw);
+    right: calc(1.2rem + 1.2vw);
+  }
+  .panel {
+    left: calc(6rem + 4vw + 1.2rem + 1.2vw + 2rem);
+    padding-top: calc(1.2rem + 1.2vw);
+    width: calc(100% - (6rem + 4vw + 1.2rem + 1.2vw + 2rem));
+  }
+  .panel .content {
+    transform: scale(0.86);
+    transform-origin: 0 0;
+  }
+}
+@media (max-width: 852px) {
+  .nav-links {
+    border-top: 1px solid black;
+    position: absolute;
+    bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 92%;
+  }
+  .nav-links .nav-link-item .nav-button {
+    border: none;
+    display: flex;
+  }
+  .logo-container {
+    bottom: auto;
+    top: calc(1.2rem + 1.2vw);
+  }
+}
 .about-panel-portrait {
   position: absolute;
   top: 50%;
@@ -175,6 +211,19 @@ h2, p, li {
   gap: 0.2rem;
 }
 
+@media (max-width: 1220px) {
+  .about-panel-portrait {
+    right: 0;
+    width: calc(8rem + 12vw);
+    top: 0;
+    transform: translate(-12%, calc(1.2rem + 1.2vw));
+  }
+}
+@media (max-width: 852px) {
+  .about-panel-portrait {
+    opacity: 0.2;
+  }
+}
 .portfolio-panel {
   display: flex;
   gap: 3.6rem;
@@ -234,12 +283,34 @@ h2, p, li {
   border: none;
 }
 
+@media (max-width: 1220px) {
+  .portfolio-panel {
+    padding-top: calc(1.2rem + 1.2vw + 1.6rem + 0.6vw);
+  }
+}
 .references-panel {
   padding-top: calc(2rem + 2vw + (1.6rem + 0.6vw) * 2);
 }
+.references-panel .reference {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+.references-panel .reference-name {
+  width: 34%;
+}
+.references-panel .reference-company {
+  width: 52%;
+  text-align: right;
+}
 
+@media (max-width: 1220px) {
+  .references-panel {
+    padding-top: calc(1.2rem + 1.2vw + (1.6rem + 0.6vw) * 2);
+  }
+}
 .contact-panel {
-  padding-bottom: calc(2rem + 2vw);
+  padding-bottom: calc(2rem + 2vw - (1.6rem + 0.6vw) / 2.4);
   display: flex;
   align-items: flex-end;
   transform: translate(0, 1%);
@@ -265,4 +336,13 @@ h2, p, li {
 }
 .contact-panel .contact-content-results a {
   color: black;
+}
+
+@media (max-width: 1220px) {
+  .contact-panel {
+    padding-bottom: calc(2rem + 2vw - (1.6rem + 0.6vw));
+  }
+  .contact-panel .contact-content {
+    transform-origin: bottom left;
+  }
 }/*# sourceMappingURL=styles.css.map */

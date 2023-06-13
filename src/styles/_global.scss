@@ -14,6 +14,13 @@ $button-height: calc(1.6rem + 0.6vw);
 
 $gap: 3.6rem;
 
+// Tablet Global Variables
+
+$body-padding-tablet: calc(1.2rem + 1.2vw);
+
+$tablet-gap: 2rem;
+
+
 $test: 1px dashed grey;
 
 * {
@@ -99,6 +106,7 @@ h2, p, li {
 }
 
 .panel {
+    // border: $test;
     background: rgba(white, 0.8);
     backdrop-filter: blur(12px);
     position: fixed;
@@ -135,6 +143,7 @@ h2, p, li {
     }
 
     .content {
+        // border: $test;
         position: relative;
         border-top: 1px solid black;
         padding-top: 0.2rem;
@@ -157,4 +166,52 @@ h2, p, li {
     z-index: 3;
     color: white;
     mix-blend-mode: exclusion;
+}
+
+//
+// Media Queries
+//
+
+@media (max-width: 1220px) {
+    .app {
+        padding: $body-padding-tablet;
+    }
+
+    .logo-container {
+        bottom: $body-padding-tablet;
+        right: $body-padding-tablet;
+    }
+
+    .panel {
+        left: calc($button-width + $body-padding-tablet + $tablet-gap);
+        padding-top: $body-padding-tablet;
+        width: calc(100% - ($button-width + $body-padding-tablet + $tablet-gap));
+
+        .content {
+            transform: scale(0.86);
+            transform-origin: 0 0;
+        }
+    }
+}
+
+@media (max-width: 852px) {
+    .nav-links {
+        border-top: 1px solid black;
+        position: absolute;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 92%;
+        .nav-link-item {
+            .nav-button {
+                border: none;
+                display: flex;
+            }
+        }
+    }
+    
+    .logo-container {
+        bottom: auto;
+        top: $body-padding-tablet;
+    }
 }

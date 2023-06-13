@@ -64,3 +64,9 @@
         }
     }
 }
+
+@media (max-width: 1220px) {
+    .portfolio-panel {
+        padding-top: calc($body-padding-tablet + $button-height);
+    }
+}

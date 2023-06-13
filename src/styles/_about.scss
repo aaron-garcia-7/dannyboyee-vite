@@ -1,12 +1,10 @@
 .about-panel {
     &-portrait {
-        // border: $test;
         position: absolute;
         top: 50%;
         right: 4rem;
         transform: translate(-20%, -50%);
         width: calc(8rem + 18vw);
-        // height: calc(12rem + 50vh);
         img {
             width: 100%;
             height: 100%;
@@ -31,16 +29,33 @@
             background: transparent
         }
         &-list-1 {
-            // border: $test;
             grid-area: list1;
             padding-left: 1.2rem;
             gap: 0.2rem;
         }
         &-list-2 {
-            // border: $test;
             grid-area: list2;
             gap: 0.2rem;
     
+        }
+    }
+}
+
+@media (max-width: 1220px) {
+    .about-panel {
+        &-portrait {
+            right: 0;
+            width: calc(8rem + 12vw);
+            top: 0;
+            transform: translate(-12%, $body-padding-tablet);
+        }
+    }
+}
+
+@media (max-width: 852px) {
+    .about-panel {
+        &-portrait {
+            opacity: 0.2;
         }
     }
 }

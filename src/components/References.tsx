@@ -9,9 +9,10 @@ const References = ({ setShowMouseDiv }: ContentProps) => {
         <div className="content content-paragraph"           
           onMouseEnter={() => setShowMouseDiv(false)} 
           onMouseLeave={() => setShowMouseDiv(true)}>
-            <p>References Content Here:</p>
-            <br />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure explicabo doloribus, obcaecati hic, mollitia dolorem veniam culpa nesciunt dolore, ad autem veritatis a repellendus reiciendis exercitationem delectus iusto.</p>
+            <p className="reference"><span className="reference-name"> Aaron Garcia </span><span className="reference-company"> UI Developer @ RainFocus</span></p>
+            <p className="reference"><span className="reference-name"> Kc Sosa </span><span className="reference-company"> Copywriter @ BonCom</span></p>
+            <p className="reference"><span className="reference-name"> Max Britton </span><span className="reference-company"> CEO @ Sunder Energy</span></p>
+            <p className="reference"><span className="reference-name"> Jessie Dent </span><span className="reference-company"> Product Manager @ iFIT</span></p>
         </div>
     </div>
   )

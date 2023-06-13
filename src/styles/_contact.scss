@@ -1,6 +1,5 @@
 .contact-panel {
-    // padding-bottom: calc($body-padding + ($button-height * 2));
-    padding-bottom: calc($body-padding);
+    padding-bottom: calc($body-padding - ($button-height / 2.4));
     display: flex;
     align-items: flex-end;
     transform: translate(0, 1%); // For animation below
@@ -31,6 +30,17 @@
             a {
                 color: black;
             }
+        }
+    }
+}
+
+@media (max-width: 1220px) {
+    .contact-panel {        
+        // padding-bottom: 0;
+        padding-bottom: calc($body-padding - ($button-height));
+
+        .contact-content {
+            transform-origin: bottom left;
         }
     }
 }

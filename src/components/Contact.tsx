@@ -12,7 +12,15 @@ const Contact = ({ setShowMouseDiv }: ContentProps) => {
             </div>
             <div className="contact-content-block">
               <p className="contact-content-method">Social</p>
-              <p className="contact-content-results"><a href="#">Instagram</a> <a href="#">LinkedIn</a></p>
+              <p className="contact-content-results">
+                <a href="https://www.instagram.com/danielgarciacreative/">Instagram</a> <a href="https://www.linkedin.com/in/dannyboyee/">LinkedIn</a>
+              </p>
+            </div>
+            <div className="contact-content-block">
+              <p className="contact-content-method">Developed By</p>
+              <p className="contact-content-results">
+                <a href="https://aarongarciacreative.com/" target="_blannk">Aaron Garcia</a>
+              </p>
             </div>
         </div>
     </div>
