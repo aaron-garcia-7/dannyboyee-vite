@@ -197,6 +197,7 @@ h2, p, li {
 @media (max-width: 852px) {
     .nav-links {
         border-top: 1px solid black;
+        border-bottom: 1px solid rgba(black, 0.6);
         position: absolute;
         bottom: 0;
         flex-direction: row;
@@ -204,9 +205,18 @@ h2, p, li {
         width: 92%;
         .nav-link-item {
             .nav-button {
+                // border: $test;
                 border: none;
                 display: flex;
+                width: auto;
             }
+            &:nth-of-type(2) {
+                transform: translate(20%, 0);
+            }
+        }
+
+        &active {
+            background: blue;
         }
     }
     

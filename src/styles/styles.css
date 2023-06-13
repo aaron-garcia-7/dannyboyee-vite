@@ -161,6 +161,7 @@ h2, p, li {
 @media (max-width: 852px) {
   .nav-links {
     border-top: 1px solid black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
     position: absolute;
     bottom: 0;
     flex-direction: row;
@@ -170,6 +171,13 @@ h2, p, li {
   .nav-links .nav-link-item .nav-button {
     border: none;
     display: flex;
+    width: auto;
+  }
+  .nav-links .nav-link-item:nth-of-type(2) {
+    transform: translate(20%, 0);
+  }
+  .nav-linksactive {
+    background: blue;
   }
   .logo-container {
     bottom: auto;
