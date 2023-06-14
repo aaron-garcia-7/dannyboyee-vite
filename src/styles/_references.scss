@@ -24,3 +24,9 @@
         padding-top: calc($body-padding-tablet + ($button-height * 2));
     }
 }
+
+@media (max-width: 852px) {
+    .references-panel {
+        padding-top: 0;
+    }
+}

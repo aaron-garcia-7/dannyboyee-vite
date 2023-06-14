@@ -106,9 +106,9 @@ h2, p, li {
 }
 
 .panel {
-    // border: $test;
     background: rgba(white, 0.8);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: fixed;
     top: 0;
     overflow: scroll;
@@ -197,26 +197,32 @@ h2, p, li {
 @media (max-width: 852px) {
     .nav-links {
         border-top: 1px solid black;
-        border-bottom: 1px solid rgba(black, 0.6);
+        background: white;
+        padding-bottom: 0px;
         position: absolute;
         bottom: 0;
         flex-direction: row;
         justify-content: space-between;
         width: 92%;
+        transition: 0.4s ease;
+        z-index: 2;
+        cursor: default;
+
         .nav-link-item {
             .nav-button {
                 // border: $test;
                 border: none;
                 display: flex;
+                align-items: center;
                 width: auto;
             }
             &:nth-of-type(2) {
                 transform: translate(20%, 0);
             }
         }
-
-        &active {
-            background: blue;
+        
+        &-active {
+            transform: translate(0, calc(-64vh - $button-height));
         }
     }
     
@@ -224,4 +230,48 @@ h2, p, li {
         bottom: auto;
         top: $body-padding-tablet;
     }
+
+    .panel {
+        background: white;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        height: 64%;
+        width: 100%;
+        padding: 0;
+        margin: $body-padding-tablet;
+        animation: none;
+        transform: translate(0, 0);
+
+        &::before {
+            display: none;
+        }
+
+        .content {
+            transform: scale(1);
+            width: 92%;
+        }
+    }
+
+    .panel-enter {
+        // opacity: 0;
+        transform: translate(0, 100%);
+    }
+    
+    .panel-enter-active {
+        // opacity: 1;
+        transform: translate(0, 0);
+        transition: 0.4s ease;
+    }
+    
+    .panel-exit {
+        // opacity: 1;
+        transform: translate(0, 0);
+      }
+      
+      .panel-exit-active {
+        // opacity: 0;
+        transform: translate(0, 100%);
+        transition: 0.4s ease;
+      }
 }

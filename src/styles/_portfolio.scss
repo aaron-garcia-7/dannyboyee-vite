@@ -70,3 +70,9 @@
         padding-top: calc($body-padding-tablet + $button-height);
     }
 }
+
+@media (max-width: 852px) {
+    .portfolio-panel {
+        padding-top: 0;
+    }
+}

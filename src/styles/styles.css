@@ -86,6 +86,7 @@ h2, p, li {
 .panel {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: fixed;
   top: 0;
   overflow: scroll;
@@ -161,27 +162,65 @@ h2, p, li {
 @media (max-width: 852px) {
   .nav-links {
     border-top: 1px solid black;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    background: white;
+    padding-bottom: 0px;
     position: absolute;
     bottom: 0;
     flex-direction: row;
     justify-content: space-between;
     width: 92%;
+    transition: 0.4s ease;
+    z-index: 2;
+    cursor: default;
   }
   .nav-links .nav-link-item .nav-button {
     border: none;
     display: flex;
+    align-items: center;
     width: auto;
   }
   .nav-links .nav-link-item:nth-of-type(2) {
     transform: translate(20%, 0);
   }
-  .nav-linksactive {
-    background: blue;
+  .nav-links-active {
+    transform: translate(0, calc(-64vh - (1.6rem + 0.6vw)));
   }
   .logo-container {
     bottom: auto;
     top: calc(1.2rem + 1.2vw);
+  }
+  .panel {
+    background: white;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    height: 64%;
+    width: 100%;
+    padding: 0;
+    margin: calc(1.2rem + 1.2vw);
+    animation: none;
+    transform: translate(0, 0);
+  }
+  .panel::before {
+    display: none;
+  }
+  .panel .content {
+    transform: scale(1);
+    width: 92%;
+  }
+  .panel-enter {
+    transform: translate(0, 100%);
+  }
+  .panel-enter-active {
+    transform: translate(0, 0);
+    transition: 0.4s ease;
+  }
+  .panel-exit {
+    transform: translate(0, 0);
+  }
+  .panel-exit-active {
+    transform: translate(0, 100%);
+    transition: 0.4s ease;
   }
 }
 .about-panel-portrait {
@@ -229,7 +268,7 @@ h2, p, li {
 }
 @media (max-width: 852px) {
   .about-panel-portrait {
-    opacity: 0.2;
+    display: none;
   }
 }
 .portfolio-panel {
@@ -296,6 +335,11 @@ h2, p, li {
     padding-top: calc(1.2rem + 1.2vw + 1.6rem + 0.6vw);
   }
 }
+@media (max-width: 852px) {
+  .portfolio-panel {
+    padding-top: 0;
+  }
+}
 .references-panel {
   padding-top: calc(2rem + 2vw + (1.6rem + 0.6vw) * 2);
 }
@@ -315,6 +359,11 @@ h2, p, li {
 @media (max-width: 1220px) {
   .references-panel {
     padding-top: calc(1.2rem + 1.2vw + (1.6rem + 0.6vw) * 2);
+  }
+}
+@media (max-width: 852px) {
+  .references-panel {
+    padding-top: 0;
   }
 }
 .contact-panel {

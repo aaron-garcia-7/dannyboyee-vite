@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-// import { useState } from 'react';
+import { NavState } from '../types/types';
+import { CSSTransition } from 'react-transition-group';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
 
@@ -8,14 +9,6 @@ import Portfolio from './components/Portfolio';
 import References from './components/References';
 import Contact from './components/Contact';
 import MouseDiv from './components/MouseDiv';
-
-interface NavState {
-  nav: boolean;
-  about: boolean;
-  portfolio: boolean;
-  references: boolean;
-  contact: boolean;
-}
 
 function App() {
   const [navState, setNavState] = useState<NavState>({
@@ -71,7 +64,7 @@ function App() {
 
 
   const inactiveStyle: React.CSSProperties = {
-    opacity: 0.2,
+    opacity: window.innerWidth <= 852 ? 1 : 0.2,
   }
 
   const bodyStyle = {
@@ -81,7 +74,7 @@ function App() {
   return (
     <div className='app' style={bodyStyle}>
       <nav>
-        <ul className={navState ? 'nav-links nav-links-active' : 'nav-links'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
+        <ul className={navState.nav ? 'nav-links nav-links-active' : 'nav-links'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
             <button 
             style={navState.portfolio || navState.references || navState.contact ? inactiveStyle : undefined} 
@@ -116,10 +109,38 @@ function App() {
             Contact {navState.contact ? '-' : '+'}
         </button>
       </nav>
-      {navState.about && <About setShowMouseDiv={setShowMouseDiv} />}
-      {navState.portfolio && <Portfolio setShowMouseDiv={setShowMouseDiv} />}
-      {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
-      {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
+      <CSSTransition
+        in={navState.about}
+        timeout={window.innerWidth <= 852 ? 400 : null}
+        classNames="panel"
+        unmountOnExit
+      >
+        <About setShowMouseDiv={setShowMouseDiv} navState={navState} />
+      </CSSTransition>
+      <CSSTransition
+        in={navState.portfolio}
+        timeout={window.innerWidth <= 852 ? 400 : null}
+        classNames="panel"
+        unmountOnExit
+      >
+        <Portfolio setShowMouseDiv={setShowMouseDiv} />
+      </CSSTransition>
+      <CSSTransition
+        in={navState.references}
+        timeout={window.innerWidth <= 852 ? 400 : null}
+        classNames="panel"
+        unmountOnExit
+      >
+        <References setShowMouseDiv={setShowMouseDiv} />
+      </CSSTransition>
+      <CSSTransition
+        in={navState.contact}
+        timeout={window.innerWidth <= 852 ? 400 : null}
+        classNames="panel"
+        unmountOnExit
+      >
+        <Contact setShowMouseDiv={setShowMouseDiv} />
+      </CSSTransition>
       <aside>
         <h1>
           Embracing Trends.<br />
