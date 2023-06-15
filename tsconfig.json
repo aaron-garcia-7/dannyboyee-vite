@@ -5,6 +5,10 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /* React transition group npm package */
+    "typeRoots" : ["./types", "./node_modules/@types"],
+    "noImplicitAny": false,
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

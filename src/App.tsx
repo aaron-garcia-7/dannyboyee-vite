@@ -136,7 +136,7 @@ function App() {
       <CSSTransition
         in={navState.contact}
         timeout={window.innerWidth <= 852 ? 400 : null}
-        classNames="panel"
+        classNames="panel-about"
         unmountOnExit
       >
         <Contact setShowMouseDiv={setShowMouseDiv} />
