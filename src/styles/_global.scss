@@ -6,6 +6,7 @@
 $satoshi: 'Satoshi', sans-serif;
 
 $large-text: calc(0.8rem + 2vw);
+$medium-text: calc(0.8rem + 0.8vw); // Tablet and Mobile
 $small-text: calc(0.8rem + 0.2vw);
 
 $body-padding: calc(2rem + 2vw);
@@ -14,10 +15,13 @@ $button-height: calc(1.6rem + 0.6vw);
 
 $gap: 3.6rem;
 
+// $ease1: cubic-bezier(.09,.69,.4,1);
+$ease1: cubic-bezier(.75,0,.25,1);
+// $ease1: cubic-bezier(.21,1.38,.52,1); // ease back
+
 // Tablet Global Variables
 
 $body-padding-tablet: calc(1.2rem + 1.2vw);
-
 $tablet-gap: 2rem;
 
 
@@ -31,9 +35,10 @@ $test: 1px dashed grey;
 }
 
 body {
-    background: white;
-    width: 100vw;
-    height: 100vh;
+    background: white; // For mouseDiv
+    // width: 100vw;
+    // height: 100vh;
+    // height: 100dvh;
     min-height: 36rem;
     display: flex;
 }
@@ -56,12 +61,17 @@ button {
     background: none;
     border: none;
     border-top: 1px solid black;
-    cursor: pointer;
     width: $button-width;
     height: $button-height;
+    color: black;
     text-align: left;
     font-size: $small-text;
     font-weight: 400;
+    cursor: pointer;
+}
+
+a {
+    color: black;
 }
 
 aside {
@@ -84,6 +94,7 @@ h2, p, li {
     position: relative;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     padding: $body-padding;
 }
 
@@ -96,8 +107,14 @@ h2, p, li {
     }
 }
 
+.nav-links-mobile {
+    display: none;
+}
+
+
 .logo-container {
-    position: fixed;
+    // position: fixed;
+    position: absolute;
     bottom: $body-padding;
     right: $body-padding;
     img {
@@ -119,26 +136,11 @@ h2, p, li {
     // min-height: 36rem;
     z-index: 1;
     transform: translate(0, -1%); // For animation below
-    animation: open-panel 0.24s ease forwards;
+    animation: open-panel 0.12s ease forwards;
 
     @keyframes open-panel {
         to {
             transform: translate(0, 0);
-        }
-    }
-    &::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        background: white;
-        width: calc(24rem + 6vw);
-        height: 100%;
-        z-index: 2;
-        animation: show-panel-content 0.24s ease forwards;
-    }
-    @keyframes show-panel-content {
-        to {
-            height: 0;
         }
     }
 
@@ -151,6 +153,24 @@ h2, p, li {
         // width: calc(16rem + 6vw);
         width: calc(24rem + 6vw);
         cursor: default;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            background: white;
+            // background: lightblue;
+            width: calc(24rem + 6vw);
+            height: 100%;
+            z-index: 2;
+            // animation: show-panel-content 0.24s $ease1 forwards;
+            animation: show-panel-content 0.12s ease forwards;
+        }
+        @keyframes show-panel-content {
+            to {
+                height: 0;
+            }
+        }
+
         p,
         h2,
         ul {
@@ -195,40 +215,90 @@ h2, p, li {
 }
 
 @media (max-width: 852px) {
+    .app {
+        overflow: hidden;
+    }
+
+    aside {
+        right: 50%;
+        transform: translate(50%, -50%) scale(1.2);
+        transform-origin: 0 center;
+        width: 100%;
+        padding: $body-padding-tablet;
+    }
+
     .nav-links {
+        // border-top: 1px solid black;
+        // background: white;
+        // padding-bottom: 0px;
+        // position: absolute;
+        // bottom: 0;
+        // left: 50%;
+        // transform: translate(-50%, 0);
+        // flex-direction: row;
+        // justify-content: space-between;
+        // width: 92%;
+        // transition: 0.5s $ease1;
+        // z-index: 2;
+        // cursor: default;
+        display: none;
+
+        // .nav-link-item {
+        //     .nav-button {
+        //         border: none;
+        //         display: flex;
+        //         align-items: center;
+        //         width: auto;
+        //     }
+        //     // &:nth-of-type(2) {
+        //     //     transform: translate(20%, 0);
+        //     // }
+        // }
+        
+        // &-active {
+        //     transform: translate(-50%, calc(-60vh - $button-height));
+        // }
+    }
+
+    .nav-links-mobile {
         border-top: 1px solid black;
         background: white;
         padding-bottom: 0px;
         position: absolute;
-        bottom: 0;
+        // bottom: $body-padding-tablet;
+        bottom: 12px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 92%;
-        transition: 0.4s ease;
+        transition: 0.5s $ease1;
         z-index: 2;
         cursor: default;
 
         .nav-link-item {
             .nav-button {
-                // border: $test;
                 border: none;
                 display: flex;
                 align-items: center;
                 width: auto;
+                font-size: $medium-text;
             }
             &:nth-of-type(2) {
-                transform: translate(20%, 0);
+                transform: translate(6%, 0);
             }
         }
-        
-        &-active {
-            transform: translate(0, calc(-64vh - $button-height));
-        }
+    }
+
+    .contact-button {
+        display: none;
     }
     
     .logo-container {
         bottom: auto;
         top: $body-padding-tablet;
+        left: $body-padding-tablet
     }
 
     .panel {
@@ -236,42 +306,30 @@ h2, p, li {
         top: auto;
         bottom: 0;
         left: 0;
-        height: 64%;
-        width: 100%;
+        height: 60%;
+        width: 92%;
+
         padding: 0;
+        // opacity: 0;
         margin: $body-padding-tablet;
         animation: none;
+        // animation: appear 0.4s ease 0.4s forwards;
         transform: translate(0, 0);
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+            }
+        }
 
         &::before {
             display: none;
         }
 
         .content {
+            // border: 2px solid coral;
+            width: 100%;
             transform: scale(1);
-            width: 92%;
         }
     }
-
-    .panel-enter {
-        // opacity: 0;
-        transform: translate(0, 100%);
-    }
-    
-    .panel-enter-active {
-        // opacity: 1;
-        transform: translate(0, 0);
-        transition: 0.4s ease;
-    }
-    
-    .panel-exit {
-        // opacity: 1;
-        transform: translate(0, 0);
-      }
-      
-      .panel-exit-active {
-        // opacity: 0;
-        transform: translate(0, 100%);
-        transition: 0.4s ease;
-      }
 }

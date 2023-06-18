@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { NavState } from '../types/types';
-import { CSSTransition } from 'react-transition-group';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
 
@@ -21,6 +20,8 @@ function App() {
 
   const handleNav = ({target}: any) => {
     const buttonClass = target.classList;
+
+    console.log(buttonClass)
   
     setNavState(prev => ({
       nav: prev.about && buttonClass.contains('about-button') ||
@@ -39,6 +40,10 @@ function App() {
     const navContent = document.querySelector('.nav-links');
     const contactButton = document.querySelector('.contact-button');
     const isContentClicked = target.classList.contains('content') || target.closest('.content');
+    const isMobileNavClicked = target.classList.contains('nav-button') && target.closest('.nav-links-mobile');
+
+    // Don't execute the function if the mobile nav was clicked
+    if (isMobileNavClicked) return;
 
     if (!navContent?.contains(target) && !contactButton?.isSameNode(target) && !isContentClicked) {
         setNavState(prev => ({
@@ -50,7 +55,8 @@ function App() {
             contact: false,
         }))
     }
-  }
+}
+
 
   const [showMouseDiv, setShowMouseDiv] = useState(false);
 
@@ -62,9 +68,8 @@ function App() {
     }
   }, [closeNav, showMouseDiv]);
 
-
-  const inactiveStyle: React.CSSProperties = {
-    opacity: window.innerWidth <= 852 ? 1 : 0.2,
+  const inactiveBtnStyle: React.CSSProperties = {
+    opacity: 0.2,
   }
 
   const bodyStyle = {
@@ -77,7 +82,7 @@ function App() {
         <ul className={navState.nav ? 'nav-links nav-links-active' : 'nav-links'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
             <button 
-            style={navState.portfolio || navState.references || navState.contact ? inactiveStyle : undefined} 
+            style={navState.portfolio || navState.references || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button about-button'} 
             onClick={(e) => handleNav(e)}>
               About {navState.about ? '-' : '+'}
@@ -85,7 +90,7 @@ function App() {
           </li>
           <li className='nav-link-item'>
             <button 
-            style={navState.about || navState.references || navState.contact ? inactiveStyle : undefined} 
+            style={navState.about || navState.references || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button portfolio-button'} 
             onClick={(e) => handleNav(e)}>
               Portfolio {navState.portfolio ? '-' : '+'}
@@ -93,7 +98,7 @@ function App() {
           </li>
           <li className='nav-link-item'>
             <button 
-            style={navState.about || navState.portfolio || navState.contact ? inactiveStyle : undefined} 
+            style={navState.about || navState.portfolio || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button references-button'} 
             onClick={(e) => handleNav(e)}>
               References {navState.references ? '-' : '+'}
@@ -101,46 +106,55 @@ function App() {
           </li>
         </ul>
         <button 
-          style={navState.about || navState.portfolio || navState.references ? inactiveStyle : undefined}
+          style={navState.about || navState.portfolio || navState.references ? inactiveBtnStyle : undefined}
           className={'nav-button contact-button'}
           onMouseEnter={() => setShowMouseDiv(false)} 
           onMouseLeave={() => setShowMouseDiv(true)}
           onClick={(e) => handleNav(e)}>
             Contact {navState.contact ? '-' : '+'}
         </button>
+
+        <ul className={navState.nav ? 'nav-links-mobile nav-links-mobile-active' : 'nav-links-mobile'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
+          <li className='nav-link-item'>
+            <button 
+            className={'nav-button about-button'} 
+            onClick={(e) => {
+              // console.log(e.target);
+              console.log(navState);
+              handleNav(e)
+            }}>
+              About {navState.about ? '-' : '+'}
+            </button>
+          </li>
+          <li className='nav-link-item'>
+            <button 
+            className={'nav-button portfolio-button'} 
+            onClick={(e) => {
+              // console.log(e.target);
+              console.log(navState);
+              handleNav(e)
+            }}>
+              Portfolio {navState.portfolio ? '-' : '+'}
+            </button>
+          </li>
+          <li className='nav-link-item'>
+            <button 
+            className={'nav-button contact-button'} 
+            onClick={(e) => {
+              // console.log(e.target);
+              console.log(navState);
+              handleNav(e)
+            }}>              Contact {navState.contact ? '-' : '+'}
+            </button>
+          </li>
+        </ul>
       </nav>
-      <CSSTransition
-        in={navState.about}
-        timeout={window.innerWidth <= 852 ? 400 : null}
-        classNames="panel"
-        unmountOnExit
-      >
-        <About setShowMouseDiv={setShowMouseDiv} navState={navState} />
-      </CSSTransition>
-      <CSSTransition
-        in={navState.portfolio}
-        timeout={window.innerWidth <= 852 ? 400 : null}
-        classNames="panel"
-        unmountOnExit
-      >
-        <Portfolio setShowMouseDiv={setShowMouseDiv} />
-      </CSSTransition>
-      <CSSTransition
-        in={navState.references}
-        timeout={window.innerWidth <= 852 ? 400 : null}
-        classNames="panel"
-        unmountOnExit
-      >
-        <References setShowMouseDiv={setShowMouseDiv} />
-      </CSSTransition>
-      <CSSTransition
-        in={navState.contact}
-        timeout={window.innerWidth <= 852 ? 400 : null}
-        classNames="panel-about"
-        unmountOnExit
-      >
-        <Contact setShowMouseDiv={setShowMouseDiv} />
-      </CSSTransition>
+
+      {navState.about && <About setShowMouseDiv={setShowMouseDiv} />}
+      {navState.portfolio && <Portfolio setShowMouseDiv={setShowMouseDiv} />}
+      {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
+      {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
+
       <aside>
         <h1>
           Embracing Trends.<br />
@@ -148,9 +162,11 @@ function App() {
           Always Leaving an Impact.<br />
         </h1>
       </aside>
+
       <figure className='logo-container'>
         <img src={logo} alt="Logo" />
       </figure>
+
       {navState.nav && showMouseDiv && <MouseDiv />}
     </div>
   )

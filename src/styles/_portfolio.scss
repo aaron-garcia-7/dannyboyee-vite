@@ -3,7 +3,7 @@
     gap: $gap;
     padding-top: calc($body-padding + $button-height);
     .content {
-        height: 1%; // To shrink div (it was tall before)
+        height: 32%; // To shrink div (it was tall before)
         ol {
             list-style: none;
             li {

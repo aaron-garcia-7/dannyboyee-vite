@@ -21,6 +21,22 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
         </li>
     ))
 
+    const mobileData = portfolioData.map((obj, index) => (
+        <li key={index}>
+          Mobile
+          <div className="text-data">
+            <span className="index-name">
+              <span className="index">{`0${index + 1}`}</span>
+              {obj.name}
+            </span>
+            <span className="project-year">{obj.year}</span>
+          </div>
+          <div className="video-data">
+            <video src={obj.video} autoPlay loop></video>
+          </div>
+        </li>
+    ))
+
   return (
     <div className="panel portfolio-panel">
         <div 
@@ -29,13 +45,9 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
           onMouseLeave={() => setShowMouseDiv(true)}
         >
             <ol>
-                {data}
+                {window.innerWidth > 852 ? data : mobileData}
             </ol>
         </div>
-        {/* {videos} */}
-        {/* <div className="video-wrapper">
-          <video src={video1} autoPlay loop></video>
-        </div> */}
     </div>
   )
 }

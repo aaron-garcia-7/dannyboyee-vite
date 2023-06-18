@@ -1,18 +1,15 @@
-import { NavState } from "../../types/types"
 import UnorderedList from "./UnorderedList"
 import { servicesData, collaboratorsData } from "../data/aboutData"
 import portraitImg from '../assets/portrait.webp'
 
 type ContentProps = {
-  navState?: NavState,
   showMouseDiv?: boolean;
   setShowMouseDiv: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// const About = ({ navState, setShowMouseDiv }: ContentProps) => {
+
 const About = ({ setShowMouseDiv }: ContentProps) => {
   return (
-    // <div className={navState.about ? "panel panel-active about-panel" : "panel about-panel"}>
     <div className="panel about-panel">
         <div className="content about-content-paragraph" onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
             <p>After being a passionate cretaive for almost a decade, I have worked with many notable companies on amazing projects around the world.</p>

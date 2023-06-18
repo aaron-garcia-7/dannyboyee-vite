@@ -10,9 +10,3 @@ export interface InlineNavButtonStyles {
     opacity: number;
     fontWeight: number;
 }
-
-export type TransitionTimeout = number | {
-    appear?: number;
-    enter?: number;
-    exit?: number;
-  };

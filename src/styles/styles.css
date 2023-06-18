@@ -11,8 +11,6 @@
 
 body {
   background: white;
-  width: 100vw;
-  height: 100vh;
   min-height: 36rem;
   display: flex;
 }
@@ -35,12 +33,17 @@ button {
   background: none;
   border: none;
   border-top: 1px solid black;
-  cursor: pointer;
   width: calc(6rem + 4vw);
   height: calc(1.6rem + 0.6vw);
+  color: black;
   text-align: left;
   font-size: calc(0.8rem + 0.2vw);
   font-weight: 400;
+  cursor: pointer;
+}
+
+a {
+  color: black;
 }
 
 aside {
@@ -64,6 +67,7 @@ h2, p, li {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   padding: calc(2rem + 2vw);
 }
 
@@ -74,8 +78,12 @@ h2, p, li {
   display: flex;
 }
 
+.nav-links-mobile {
+  display: none;
+}
+
 .logo-container {
-  position: fixed;
+  position: absolute;
   bottom: calc(2rem + 2vw);
   right: calc(2rem + 2vw);
 }
@@ -96,26 +104,11 @@ h2, p, li {
   height: 100%;
   z-index: 1;
   transform: translate(0, -1%);
-  animation: open-panel 0.24s ease forwards;
+  animation: open-panel 0.12s ease forwards;
 }
 @keyframes open-panel {
   to {
     transform: translate(0, 0);
-  }
-}
-.panel::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  background: white;
-  width: calc(24rem + 6vw);
-  height: 100%;
-  z-index: 2;
-  animation: show-panel-content 0.24s ease forwards;
-}
-@keyframes show-panel-content {
-  to {
-    height: 0;
   }
 }
 .panel .content {
@@ -125,6 +118,21 @@ h2, p, li {
   padding-bottom: 1.8rem;
   width: calc(24rem + 6vw);
   cursor: default;
+}
+.panel .content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  background: white;
+  width: calc(24rem + 6vw);
+  height: 100%;
+  z-index: 2;
+  animation: show-panel-content 0.12s ease forwards;
+}
+@keyframes show-panel-content {
+  to {
+    height: 0;
+  }
 }
 .panel .content p,
 .panel .content h2,
@@ -160,67 +168,76 @@ h2, p, li {
   }
 }
 @media (max-width: 852px) {
+  .app {
+    overflow: hidden;
+  }
+  aside {
+    right: 50%;
+    transform: translate(50%, -50%) scale(1.2);
+    transform-origin: 0 center;
+    width: 100%;
+    padding: calc(1.2rem + 1.2vw);
+  }
   .nav-links {
+    display: none;
+  }
+  .nav-links-mobile {
     border-top: 1px solid black;
     background: white;
     padding-bottom: 0px;
     position: absolute;
-    bottom: 0;
+    bottom: 12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 92%;
-    transition: 0.4s ease;
+    transition: 0.5s cubic-bezier(0.75, 0, 0.25, 1);
     z-index: 2;
     cursor: default;
   }
-  .nav-links .nav-link-item .nav-button {
+  .nav-links-mobile .nav-link-item .nav-button {
     border: none;
     display: flex;
     align-items: center;
     width: auto;
+    font-size: calc(0.8rem + 0.8vw);
   }
-  .nav-links .nav-link-item:nth-of-type(2) {
-    transform: translate(20%, 0);
+  .nav-links-mobile .nav-link-item:nth-of-type(2) {
+    transform: translate(6%, 0);
   }
-  .nav-links-active {
-    transform: translate(0, calc(-64vh - (1.6rem + 0.6vw)));
+  .contact-button {
+    display: none;
   }
   .logo-container {
     bottom: auto;
     top: calc(1.2rem + 1.2vw);
+    left: calc(1.2rem + 1.2vw);
   }
   .panel {
     background: white;
     top: auto;
     bottom: 0;
     left: 0;
-    height: 64%;
-    width: 100%;
+    height: 60%;
+    width: 92%;
     padding: 0;
     margin: calc(1.2rem + 1.2vw);
     animation: none;
     transform: translate(0, 0);
   }
+  @keyframes appear {
+    to {
+      opacity: 1;
+    }
+  }
   .panel::before {
     display: none;
   }
   .panel .content {
+    width: 100%;
     transform: scale(1);
-    width: 92%;
-  }
-  .panel-enter {
-    transform: translate(0, 100%);
-  }
-  .panel-enter-active {
-    transform: translate(0, 0);
-    transition: 0.4s ease;
-  }
-  .panel-exit {
-    transform: translate(0, 0);
-  }
-  .panel-exit-active {
-    transform: translate(0, 100%);
-    transition: 0.4s ease;
   }
 }
 .about-panel-portrait {
@@ -277,7 +294,7 @@ h2, p, li {
   padding-top: calc(2rem + 2vw + 1.6rem + 0.6vw);
 }
 .portfolio-panel .content {
-  height: 1%;
+  height: 32%;
 }
 .portfolio-panel .content ol {
   list-style: none;
@@ -372,11 +389,11 @@ h2, p, li {
   align-items: flex-end;
   transform: translate(0, 1%);
 }
-.contact-panel::before {
-  top: 0;
-}
 .contact-panel .contact-content {
   border: none;
+}
+.contact-panel .contact-content::before {
+  top: 0;
 }
 .contact-panel .contact-content-block {
   display: flex;
@@ -401,19 +418,5 @@ h2, p, li {
   }
   .contact-panel .contact-content {
     transform-origin: bottom left;
-  }
-}
-@media (max-width: 852px) {
-  .contact-panel {
-    background: lightblue;
-    position: fixed;
-    top: 0;
-    bottom: auto;
-    padding-bottom: calc(2rem + 2vw - (1.6rem + 0.6vw) / 2.4);
-    display: flex;
-    align-items: flex-end;
-  }
-  .contact-panel::before {
-    top: 0;
   }
 }/*# sourceMappingURL=styles.css.map */

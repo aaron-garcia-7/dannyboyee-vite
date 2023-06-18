@@ -3,13 +3,12 @@
     display: flex;
     align-items: flex-end;
     transform: translate(0, 1%); // For animation below
-    &::before {
-        top: 0;
-    }
-
 
     .contact-content {
         border: none;
+        &::before {
+            top: 0;
+        }
 
         &-block {
             display: flex;
@@ -45,18 +44,16 @@
     }
 }
 
-@media (max-width: 852px) {
-    .contact-panel {
-        background: lightblue;
-        position: fixed;
-        top: 0;
-        bottom: auto;
-        padding-bottom: calc($body-padding - ($button-height / 2.4));
-        display: flex;
-        align-items: flex-end;
-        // transform: translate(0, 1%); // For animation below
-        &::before {
-            top: 0;
-        }
-    }
-}
+// @media (max-width: 852px) {
+//     .contact-panel {
+//         // width: 92%;
+//         // position: fixed;
+//         // top: 48px;
+//         // bottom: auto;
+//         // padding-bottom: 0;
+//         // height: 24%;
+//         // &::before {
+//         //     top: 0;
+//         // }
+//     }
+// }
