@@ -6,7 +6,7 @@
 $satoshi: 'Satoshi', sans-serif;
 
 $large-text: calc(0.8rem + 2vw);
-$medium-text: calc(0.8rem + 0.8vw); // Tablet and Mobile
+// $medium-text: calc(0.8rem + 0.8vw); // Tablet and Mobile
 $small-text: calc(0.8rem + 0.2vw);
 
 $body-padding: calc(2rem + 2vw);
@@ -283,7 +283,7 @@ h2, p, li {
                 display: flex;
                 align-items: center;
                 width: auto;
-                font-size: $medium-text;
+                // font-size: $medium-text;
             }
             &:nth-of-type(2) {
                 transform: translate(6%, 0);

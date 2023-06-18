@@ -1,3 +1,4 @@
+import { useState } from "react";
 import portfolioData from "../data/portfolioData"
 
 type ContentProps = {
@@ -21,9 +22,14 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
         </li>
     ))
 
+    const [projectState, setProjectState] = useState(null);
+
+    const toggleProject = (i: number | null) => {
+      projectState === i ? setProjectState(null) : setProjectState(i);
+    }
+
     const mobileData = portfolioData.map((obj, index) => (
-        <li key={index}>
-          Mobile
+        <li key={index} onClick={() => toggleProject(index)}>
           <div className="text-data">
             <span className="index-name">
               <span className="index">{`0${index + 1}`}</span>
@@ -31,9 +37,10 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
             </span>
             <span className="project-year">{obj.year}</span>
           </div>
+          {projectState === index && (
           <div className="video-data">
             <video src={obj.video} autoPlay loop></video>
-          </div>
+          </div>)}
         </li>
     ))
 
