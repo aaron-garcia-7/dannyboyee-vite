@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavState } from '../types/types';
+// import { DistortionText } from 'react-text-fun';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
 
@@ -148,6 +149,7 @@ function App() {
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
 
       <aside>
+        {/* <DistortionText text="Hello wold" /> */}
         <h1 className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
           Embracing Trends.<br />
           Setting the Creative Standard.<br />
