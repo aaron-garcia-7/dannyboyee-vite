@@ -197,6 +197,24 @@ h2, p, li {
     z-index: 2;
     cursor: default;
   }
+  .nav-links-mobile::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 62vh;
+    transform: translate(calc((2rem + 2vw) * -0.6), 98%);
+    background: white;
+    pointer-events: none;
+    opacity: 1;
+  }
+  .nav-links-mobile-active {
+    transform: translate(-50%, -63vh);
+  }
+  .nav-links-mobile-active::after {
+    animation: fade 0.6s ease 0.6s forwards;
+  }
   .nav-links-mobile .nav-link-item .nav-button {
     border: none;
     display: flex;
@@ -222,8 +240,10 @@ h2, p, li {
     height: 60%;
     width: 92%;
     padding: 0;
+    opacity: 0;
     margin: calc(1.2rem + 1.2vw);
     animation: none;
+    animation: appear 0.4s ease 0.4s forwards;
     transform: translate(0, 0);
   }
   @keyframes appear {
@@ -231,12 +251,17 @@ h2, p, li {
       opacity: 1;
     }
   }
-  .panel::before {
-    display: none;
-  }
   .panel .content {
     width: 100%;
     transform: scale(1);
+  }
+  .panel .content::before {
+    display: none;
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 0;
   }
 }
 .about-panel-portrait {

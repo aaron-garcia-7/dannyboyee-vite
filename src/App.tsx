@@ -79,7 +79,7 @@ function App() {
   return (
     <div className='app' style={bodyStyle}>
       <nav>
-        <ul className={navState.nav ? 'nav-links nav-links-active' : 'nav-links'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
+        <ul className='nav-links' onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
             <button 
             style={navState.portfolio || navState.references || navState.contact ? inactiveBtnStyle : undefined} 
