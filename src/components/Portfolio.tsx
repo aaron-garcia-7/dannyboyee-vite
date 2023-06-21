@@ -39,7 +39,7 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
           </div>
           {projectState === index && (
           <div className="video-data">
-            <video src={obj.video} autoPlay loop></video>
+            <video src={obj.video} autoPlay loop playsInline></video>
           </div>)}
         </li>
     ))

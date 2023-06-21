@@ -20,8 +20,6 @@ function App() {
 
   const handleNav = ({target}: any) => {
     const buttonClass = target.classList;
-
-    console.log(buttonClass)
   
     setNavState(prev => ({
       nav: prev.about && buttonClass.contains('about-button') ||
@@ -119,8 +117,6 @@ function App() {
             <button 
             className={'nav-button about-button'} 
             onClick={(e) => {
-              // console.log(e.target);
-              console.log(navState);
               handleNav(e)
             }}>
               About {navState.about ? '-' : '+'}
@@ -130,8 +126,6 @@ function App() {
             <button 
             className={'nav-button portfolio-button'} 
             onClick={(e) => {
-              // console.log(e.target);
-              console.log(navState);
               handleNav(e)
             }}>
               Portfolio {navState.portfolio ? '-' : '+'}
@@ -141,8 +135,6 @@ function App() {
             <button 
             className={'nav-button contact-button'} 
             onClick={(e) => {
-              // console.log(e.target);
-              console.log(navState);
               handleNav(e)
             }}>              Contact {navState.contact ? '-' : '+'}
             </button>

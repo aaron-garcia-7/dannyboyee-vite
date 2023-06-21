@@ -210,10 +210,15 @@ h2, p, li {
     opacity: 1;
   }
   .nav-links-mobile-active {
-    transform: translate(-50%, -63vh);
+    transform: translate(-50%, -1360%);
   }
   .nav-links-mobile-active::after {
     animation: fade 0.6s ease 0.6s forwards;
+  }
+  @keyframes fade {
+    to {
+      opacity: 0;
+    }
   }
   .nav-links-mobile .nav-link-item .nav-button {
     border: none;
@@ -234,6 +239,7 @@ h2, p, li {
   }
   .panel {
     background: white;
+    position: absolute;
     top: auto;
     bottom: 0;
     left: 0;
@@ -241,7 +247,7 @@ h2, p, li {
     width: 92%;
     padding: 0;
     opacity: 0;
-    margin: calc(1.2rem + 1.2vw);
+    margin: 0 4%;
     animation: none;
     animation: appear 0.4s ease 0.4s forwards;
     transform: translate(0, 0);
@@ -259,9 +265,9 @@ h2, p, li {
     display: none;
   }
 }
-@keyframes fade {
-  to {
-    opacity: 0;
+@media (max-width: 480px) {
+  .nav-links-mobile::after {
+    transform: translate(calc((2rem + 2vw) * -0.6), 100%);
   }
 }
 .about-panel-portrait {
@@ -468,5 +474,24 @@ h2, p, li {
   }
   .contact-panel .contact-content {
     transform-origin: bottom left;
+  }
+}
+@media (max-width: 852px) {
+  .contact-panel {
+    align-items: flex-start;
+  }
+  .contact-panel .contact-content-block {
+    flex-direction: column;
+    margin-top: 0;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+  .contact-panel .contact-content-method {
+    width: 100%;
+  }
+  .contact-panel .contact-content-results {
+    border: none;
+    width: 100%;
+    padding-left: 12px;
   }
 }/*# sourceMappingURL=styles.css.map */
