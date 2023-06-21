@@ -22,7 +22,7 @@ const Portfolio: React.FC<ContentProps> = ({ setShowMouseDiv }) => {
         </li>
     ))
 
-    const [projectState, setProjectState] = useState(null);
+    const [projectState, setProjectState] = useState<number | null>(null);
 
     const toggleProject = (i: number | null) => {
       projectState === i ? setProjectState(null) : setProjectState(i);

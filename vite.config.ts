@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import sassDts from 'vite-plugin-sass-dts'
-import path from 'path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import sassDts from 'vite-plugin-sass-dts';
+import * as path from 'path';
 
 export default defineConfig({
   server: {
@@ -19,4 +19,4 @@ export default defineConfig({
       sourceDir: path.resolve(__dirname, './src'),
     }),
   ],
-})
+});

@@ -178,6 +178,9 @@ h2, p, li {
     width: 100%;
     padding: calc(1.2rem + 1.2vw);
   }
+  aside .hero-text-active {
+    animation: fade 0.4s ease 0.4s forwards;
+  }
   .nav-links {
     display: none;
   }
@@ -204,13 +207,13 @@ h2, p, li {
     left: 0;
     width: 100vw;
     height: 62vh;
-    transform: translate(calc((2rem + 2vw) * -0.6), 98%);
+    transform: translate(calc((2rem + 2vw) * -0.6), calc(98% + 2vw));
     background: white;
     pointer-events: none;
     opacity: 1;
   }
   .nav-links-mobile-active {
-    transform: translate(-50%, -1360%);
+    transform: translate(-50%, -60vh);
   }
   .nav-links-mobile-active::after {
     animation: fade 0.6s ease 0.6s forwards;
@@ -268,6 +271,9 @@ h2, p, li {
 @media (max-width: 480px) {
   .nav-links-mobile::after {
     transform: translate(calc((2rem + 2vw) * -0.6), 100%);
+  }
+  .nav-links-mobile-active {
+    transform: translate(-50%, -52vh);
   }
 }
 .about-panel-portrait {

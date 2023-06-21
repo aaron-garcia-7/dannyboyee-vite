@@ -148,7 +148,7 @@ function App() {
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
 
       <aside>
-        <h1>
+        <h1 className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
           Embracing Trends.<br />
           Setting the Creative Standard.<br />
           Always Leaving an Impact.<br />
