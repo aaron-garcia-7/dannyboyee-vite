@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavState } from '../types/types';
-// import { DistortionText } from 'react-text-fun';
+import { DistortionText } from 'react-text-fun';
+// import { DistortionText, SplitColorChannelText, FliesText, LiquidDistortionText } from 'react-text-fun';
 import './styles/styles.css';
 import logo from '../public/logo-dark.svg';
 
@@ -75,6 +76,15 @@ function App() {
     cursor: navState.nav ? 'none' : 'default',
   }
 
+  // let [flies, setFlies] = useState(0.6);
+
+  // const updateFlies = () => {
+  //   console.log(flies);
+    
+  //   setFlies(prev => prev + 1);
+  //   console.log(flies);
+  // }
+
   return (
     <div className='app' style={bodyStyle}>
       <nav>
@@ -148,12 +158,75 @@ function App() {
       {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
 
-      <aside>
-        {/* <DistortionText text="Hello wold" /> */}
-        <h1 className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
-          Embracing Trends.<br />
-          Setting the Creative Standard.<br />
-          Always Leaving an Impact.<br />
+      <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
+        <DistortionText text="Embracing Trends." id="fun-text-1"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          speed={0.8}
+          rotation={2}
+          distortX={0}
+          distortY={2}
+          noiseAmplitude={0.04}
+          noiseVolatility={2}/><br />
+
+          <DistortionText text="Setting the Creative Standard." id="fun-text-2"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          speed={0.8}
+          rotation={2}
+          distortX={0}
+          distortY={2}
+          noiseAmplitude={0.04}
+          noiseVolatility={2}/><br />
+
+          <DistortionText text="Always Leaving an Impact." id="fun-text-3"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          speed={0.8}
+          rotation={2}
+          distortX={0}
+          distortY={2}
+          noiseAmplitude={0.04}
+          noiseVolatility={2}/><br />
+
+        {/* <SplitColorChannelText text="Embracing Trends"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          rotation={12}
+          rgbOffset={0.08}
+          addBlur={true}
+          addNoise={true}
+        /><br/> */}
+
+        {/* <FliesText text="Embracing Trends."
+          fill='black'
+          fontSize={56}
+          fontFamily="Sans-serif"
+          fontWeight={900}
+          cellRadius={0.6}
+          cellWidth={0.02}
+          speed={2}
+          dodge={true}
+          dodgeY={0.02}
+          dodgeSpread={0.02}
+        /> */}
+
+        {/* <LiquidDistortionText text="Embracing Trends"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          speed={0.12}
+          volatility={0.06}
+        /> */}
+
+        <h1>
+          {/* Embracing Trends.<br /> */}
+          {/* Setting the Creative Standard.<br /> */}
+          {/* Always Leaving an Impact.<br /> */}
         </h1>
       </aside>
 

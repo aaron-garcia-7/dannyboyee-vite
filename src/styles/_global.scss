@@ -75,10 +75,45 @@ a {
 }
 
 aside {
+    // border: $test;
     position: absolute;
     top: 50%;
-    right: 4rem;
+    // right: 4rem;
+    right: 50%;
     transform: translate(-20%, -50%);
+    .b-canvas {
+        // border: 1px solid red;
+        // transform: scale(2);
+        transform-origin: right center;
+        padding: 12px;
+        &:nth-of-type(2) {
+            display: none;
+        }
+    }
+}
+
+#fun-text-1,
+#fun-text-2,
+#fun-text-3 {
+    position: absolute;
+    // left: 50%;
+    .b-canvas {
+        &:nth-of-type(2) {
+            display: none;
+        }
+    }
+}
+#fun-text-1 {
+    top: 50%;
+    transform: translate(0, -100%);
+}
+#fun-text-2 {
+    bottom: 50%;
+    transform: translate(0, 50%);
+}
+#fun-text-3 {
+    bottom: 50%;
+    transform: translate(0, 100%);
 }
 
 h1 {
@@ -192,6 +227,15 @@ h2, p, li {
 // Media Queries
 //
 
+// @media (max-width: 1440px) {
+//     aside {
+//         .b-canvas {
+//             transform: scale(1.2);
+//         }
+//     }
+// }
+
+
 @media (max-width: 1220px) {
     .app {
         padding: $body-padding-tablet;
@@ -217,15 +261,26 @@ h2, p, li {
 @media (max-width: 852px) {
     .app {
         overflow: hidden;
+        // background: lightblue;
     }
 
-    aside {
+    .hero-text {
+        border: $test;
         right: 50%;
-        transform: translate(50%, -50%) scale(1.2);
-        transform-origin: 0 center;
-        width: 100%;
-        padding: $body-padding-tablet;
-        .hero-text-active {
+        transform: translate(50%, -50%);
+        width: 50vw;
+
+        // position: absolute;
+        // top: 50%;
+        // right: 4rem;
+        // transform: translate(-20%, -50%);
+        // width: 100%;
+
+        .b-canvas {
+            transform: scale(1);
+        }
+
+        &-active {
             animation: fade 0.4s ease 0.4s forwards;
         }
     }
@@ -267,7 +322,7 @@ h2, p, li {
         }
         
         &-active {
-            transform: translate(-50%, -60vh);
+            transform: translate(-50%, -58.4vh);
             // transform: translate(-50%, -1360%);
             &::after {
                 animation: fade 0.6s ease 0.6s forwards;

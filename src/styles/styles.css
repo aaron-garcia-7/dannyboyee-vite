@@ -49,8 +49,41 @@ a {
 aside {
   position: absolute;
   top: 50%;
-  right: 4rem;
+  right: 50%;
   transform: translate(-20%, -50%);
+}
+aside .b-canvas {
+  transform-origin: right center;
+  padding: 12px;
+}
+aside .b-canvas:nth-of-type(2) {
+  display: none;
+}
+
+#fun-text-1,
+#fun-text-2,
+#fun-text-3 {
+  position: absolute;
+}
+#fun-text-1 .b-canvas:nth-of-type(2),
+#fun-text-2 .b-canvas:nth-of-type(2),
+#fun-text-3 .b-canvas:nth-of-type(2) {
+  display: none;
+}
+
+#fun-text-1 {
+  top: 50%;
+  transform: translate(0, -100%);
+}
+
+#fun-text-2 {
+  bottom: 50%;
+  transform: translate(0, 50%);
+}
+
+#fun-text-3 {
+  bottom: 50%;
+  transform: translate(0, 100%);
 }
 
 h1 {
@@ -171,14 +204,16 @@ h2, p, li {
   .app {
     overflow: hidden;
   }
-  aside {
+  .hero-text {
+    border: 1px dashed grey;
     right: 50%;
-    transform: translate(50%, -50%) scale(1.2);
-    transform-origin: 0 center;
-    width: 100%;
-    padding: calc(1.2rem + 1.2vw);
+    transform: translate(50%, -50%);
+    width: 50vw;
   }
-  aside .hero-text-active {
+  .hero-text .b-canvas {
+    transform: scale(1);
+  }
+  .hero-text-active {
     animation: fade 0.4s ease 0.4s forwards;
   }
   .nav-links {
@@ -213,7 +248,7 @@ h2, p, li {
     opacity: 1;
   }
   .nav-links-mobile-active {
-    transform: translate(-50%, -60vh);
+    transform: translate(-50%, -58.4vh);
   }
   .nav-links-mobile-active::after {
     animation: fade 0.6s ease 0.6s forwards;
