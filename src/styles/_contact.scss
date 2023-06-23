@@ -17,7 +17,6 @@
         }
 
         &-method {
-            // background: lightblue;
             border-top: 1px solid black;
             width: calc(6rem + 6vw);
         }
@@ -35,7 +34,6 @@
 
 @media (max-width: 1220px) {
     .contact-panel {        
-        // padding-bottom: 0;
         padding-bottom: calc($body-padding - ($button-height));
 
         .contact-content {

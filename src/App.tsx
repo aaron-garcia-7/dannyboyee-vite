@@ -163,34 +163,37 @@ function App() {
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           speed={0.8}
-          rotation={2}
-          distortX={0}
-          distortY={2}
-          noiseAmplitude={0.04}
-          noiseVolatility={2}/><br />
+          rotation={0.8}
+          distortX={0.2}
+          distortY={0.8}
+          noiseAmplitude={0.02}
+          noiseVolatility={1}/><br />
 
           <DistortionText text="Setting the Creative Standard." id="fun-text-2"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           speed={0.8}
-          rotation={2}
-          distortX={0}
-          distortY={2}
-          noiseAmplitude={0.04}
-          noiseVolatility={2}/><br />
+          rotation={0.8}
+          distortX={0.2}
+          distortY={0.8}
+          noiseAmplitude={0.02}
+          noiseVolatility={1}/><br />
 
           <DistortionText text="Always Leaving an Impact." id="fun-text-3"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           speed={0.8}
-          rotation={2}
-          distortX={0}
-          distortY={2}
-          noiseAmplitude={0.04}
-          noiseVolatility={2}/><br />
+          rotation={0.8}
+          distortX={0.2}
+          distortY={0.8}
+          noiseAmplitude={0.02}
+          noiseVolatility={1}/><br />
 
         {/* <SplitColorChannelText text="Embracing Trends"
           fill={'black'}

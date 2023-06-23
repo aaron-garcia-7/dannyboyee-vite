@@ -6,7 +6,7 @@
 $satoshi: 'Satoshi', sans-serif;
 
 $large-text: calc(0.8rem + 2vw);
-// $medium-text: calc(0.8rem + 0.8vw); // Tablet and Mobile
+// $medium-text: calc(0.8rem + 0.8vw); // Tablet and Mobile?
 $small-text: calc(0.8rem + 0.2vw);
 
 $body-padding: calc(2rem + 2vw);
@@ -15,15 +15,12 @@ $button-height: calc(1.6rem + 0.6vw);
 
 $gap: 3.6rem;
 
-// $ease1: cubic-bezier(.09,.69,.4,1);
 $ease1: cubic-bezier(.75,0,.25,1);
-// $ease1: cubic-bezier(.21,1.38,.52,1); // ease back
 
 // Tablet Global Variables
 
 $body-padding-tablet: calc(1.2rem + 1.2vw);
 $tablet-gap: 2rem;
-
 
 $test: 1px dashed grey;
 
@@ -36,9 +33,6 @@ $test: 1px dashed grey;
 
 body {
     background: white; // For mouseDiv
-    // width: 100vw;
-    // height: 100vh;
-    // height: 100dvh;
     min-height: 36rem;
     display: flex;
 }
@@ -74,17 +68,33 @@ a {
     color: black;
 }
 
-aside {
-    // border: $test;
+.hero-text {
     position: absolute;
     top: 50%;
-    // right: 4rem;
-    right: 50%;
-    transform: translate(-20%, -50%);
+    right: 25vw;
+    transform: translate(0, -50%);
+    width: 25rem;
+
+    div {
+        position: absolute; // For #fun-text beloww
+    }
+    #fun-text-1 {
+        top: 50%;
+        transform: translate(0, -112%);
+    }
+    #fun-text-2 {
+        bottom: 50%;
+        transform: translate(0, 50%);
+    }
+    #fun-text-3 {
+        bottom: 50%;
+        transform: translate(0, 112%);
+    }
+
     .b-canvas {
-        // border: 1px solid red;
-        // transform: scale(2);
-        transform-origin: right center;
+        transform: scale(1.2);
+        margin: 0 24px;
+        transform-origin: left center;
         padding: 12px;
         &:nth-of-type(2) {
             display: none;
@@ -92,34 +102,12 @@ aside {
     }
 }
 
-#fun-text-1,
-#fun-text-2,
-#fun-text-3 {
-    position: absolute;
-    // left: 50%;
-    .b-canvas {
-        &:nth-of-type(2) {
-            display: none;
-        }
-    }
-}
-#fun-text-1 {
-    top: 50%;
-    transform: translate(0, -100%);
-}
-#fun-text-2 {
-    bottom: 50%;
-    transform: translate(0, 50%);
-}
-#fun-text-3 {
-    bottom: 50%;
-    transform: translate(0, 100%);
-}
+// Replaced with React-text-fun
+// h1 {
+//     font-size: $large-text;
+//     font-weight: 200;
+// }
 
-h1 {
-    font-size: $large-text;
-    font-weight: 200;
-}
 h2, p, li {
     font-size: $small-text;
     font-weight: 400;
@@ -148,7 +136,6 @@ h2, p, li {
 
 
 .logo-container {
-    // position: fixed;
     position: absolute;
     bottom: $body-padding;
     right: $body-padding;
@@ -168,7 +155,6 @@ h2, p, li {
     left: calc($button-width + $body-padding + $gap);
     width: calc(100% - ($button-width + $body-padding + $gap));
     height: 100%;
-    // min-height: 36rem;
     z-index: 1;
     transform: translate(0, -1%); // For animation below
     animation: open-panel 0.12s ease forwards;
@@ -180,12 +166,10 @@ h2, p, li {
     }
 
     .content {
-        // border: $test;
         position: relative;
         border-top: 1px solid black;
         padding-top: 0.2rem;
         padding-bottom: 1.8rem;
-        // width: calc(16rem + 6vw);
         width: calc(24rem + 6vw);
         cursor: default;
         &::before {
@@ -193,11 +177,9 @@ h2, p, li {
             position: absolute;
             bottom: 0;
             background: white;
-            // background: lightblue;
             width: calc(24rem + 6vw);
             height: 100%;
             z-index: 2;
-            // animation: show-panel-content 0.24s $ease1 forwards;
             animation: show-panel-content 0.12s ease forwards;
         }
         @keyframes show-panel-content {
@@ -227,18 +209,24 @@ h2, p, li {
 // Media Queries
 //
 
-// @media (max-width: 1440px) {
-//     aside {
-//         .b-canvas {
-//             transform: scale(1.2);
-//         }
-//     }
-// }
-
+@media (max-width: 1440px) {
+    .hero-text {
+        .b-canvas {
+            transform: scale(1);
+        }
+    }
+}
 
 @media (max-width: 1220px) {
     .app {
         padding: $body-padding-tablet;
+    }
+
+    .hero-text {
+        right: 32vw;
+        .b-canvas {
+            transform: scale(0.9);
+        }
     }
 
     .logo-container {
@@ -261,23 +249,15 @@ h2, p, li {
 @media (max-width: 852px) {
     .app {
         overflow: hidden;
-        // background: lightblue;
     }
 
     .hero-text {
-        border: $test;
-        right: 50%;
-        transform: translate(50%, -50%);
-        width: 50vw;
-
-        // position: absolute;
-        // top: 50%;
-        // right: 4rem;
-        // transform: translate(-20%, -50%);
-        // width: 100%;
+        right: 25%;
+        transform: translate(-50%, -50%);
+        width: 16rem;
 
         .b-canvas {
-            transform: scale(1);
+            transform: scale(0.75);
         }
 
         &-active {
@@ -295,7 +275,6 @@ h2, p, li {
         padding-bottom: 0px;
         position: absolute;
         bottom: 12px;
-        // bottom: $body-padding-tablet;
         left: 50%;
         transform: translate(-50%, 0);
         display: flex;
@@ -313,17 +292,14 @@ h2, p, li {
             left: 0;
             width: 100vw;
             height: 62vh;
-            // transform: translate(calc($body-padding * -0.6), 98%);
-            transform: translate(calc($body-padding * -0.6), calc(98% + 2vw));
-            // background: lightgreen;
+            transform: translate(calc($body-padding * -0.6), calc(98% + 1.2vw));
             background: white;
             pointer-events: none;
             opacity: 1;
         }
         
         &-active {
-            transform: translate(-50%, -58.4vh);
-            // transform: translate(-50%, -1360%);
+            transform: translate(-50%, -58.2vh);
             &::after {
                 animation: fade 0.6s ease 0.6s forwards;
             }
@@ -369,7 +345,6 @@ h2, p, li {
         padding: 0;
         opacity: 0;
         margin: 0 4%;
-        animation: none;
         animation: appear 0.4s ease 0.4s forwards;
         transform: translate(0, 0);
 
@@ -381,7 +356,6 @@ h2, p, li {
 
 
         .content {
-            // border: 1px solid coral;
             width: 100%;
             transform: scale(1);
             &::before {
@@ -392,13 +366,22 @@ h2, p, li {
 }
 
 @media (max-width: 480px) {
+    .hero-text {
+        right: 50%;
+        transform: translate(50%, -50%);
+        width: 100vw;
+        .b-canvas {
+            transform: scale(0.9);
+            padding: 4px;
+        }
+    }
+
     .nav-links-mobile {
         &::after {
             transform: translate(calc($body-padding * -0.6), 100%);
         }
         &-active {
             transform: translate(-50%, -52vh);
-            // transform: translate(-50%, -1360%);
         }
     }
 }

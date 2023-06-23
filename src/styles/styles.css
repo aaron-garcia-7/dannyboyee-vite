@@ -46,49 +46,36 @@ a {
   color: black;
 }
 
-aside {
+.hero-text {
   position: absolute;
   top: 50%;
-  right: 50%;
-  transform: translate(-20%, -50%);
+  right: 25vw;
+  transform: translate(0, -50%);
+  width: 25rem;
 }
-aside .b-canvas {
-  transform-origin: right center;
-  padding: 12px;
-}
-aside .b-canvas:nth-of-type(2) {
-  display: none;
-}
-
-#fun-text-1,
-#fun-text-2,
-#fun-text-3 {
+.hero-text div {
   position: absolute;
 }
-#fun-text-1 .b-canvas:nth-of-type(2),
-#fun-text-2 .b-canvas:nth-of-type(2),
-#fun-text-3 .b-canvas:nth-of-type(2) {
-  display: none;
-}
-
-#fun-text-1 {
+.hero-text #fun-text-1 {
   top: 50%;
-  transform: translate(0, -100%);
+  transform: translate(0, -112%);
 }
-
-#fun-text-2 {
+.hero-text #fun-text-2 {
   bottom: 50%;
   transform: translate(0, 50%);
 }
-
-#fun-text-3 {
+.hero-text #fun-text-3 {
   bottom: 50%;
-  transform: translate(0, 100%);
+  transform: translate(0, 112%);
 }
-
-h1 {
-  font-size: calc(0.8rem + 2vw);
-  font-weight: 200;
+.hero-text .b-canvas {
+  transform: scale(1.2);
+  margin: 0 24px;
+  transform-origin: left center;
+  padding: 12px;
+}
+.hero-text .b-canvas:nth-of-type(2) {
+  display: none;
 }
 
 h2, p, li {
@@ -182,9 +169,20 @@ h2, p, li {
   mix-blend-mode: exclusion;
 }
 
+@media (max-width: 1440px) {
+  .hero-text .b-canvas {
+    transform: scale(1);
+  }
+}
 @media (max-width: 1220px) {
   .app {
     padding: calc(1.2rem + 1.2vw);
+  }
+  .hero-text {
+    right: 32vw;
+  }
+  .hero-text .b-canvas {
+    transform: scale(0.9);
   }
   .logo-container {
     bottom: calc(1.2rem + 1.2vw);
@@ -205,13 +203,12 @@ h2, p, li {
     overflow: hidden;
   }
   .hero-text {
-    border: 1px dashed grey;
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 50vw;
+    right: 25%;
+    transform: translate(-50%, -50%);
+    width: 16rem;
   }
   .hero-text .b-canvas {
-    transform: scale(1);
+    transform: scale(0.75);
   }
   .hero-text-active {
     animation: fade 0.4s ease 0.4s forwards;
@@ -242,13 +239,13 @@ h2, p, li {
     left: 0;
     width: 100vw;
     height: 62vh;
-    transform: translate(calc((2rem + 2vw) * -0.6), calc(98% + 2vw));
+    transform: translate(calc((2rem + 2vw) * -0.6), calc(98% + 1.2vw));
     background: white;
     pointer-events: none;
     opacity: 1;
   }
   .nav-links-mobile-active {
-    transform: translate(-50%, -58.4vh);
+    transform: translate(-50%, -58.2vh);
   }
   .nav-links-mobile-active::after {
     animation: fade 0.6s ease 0.6s forwards;
@@ -286,7 +283,6 @@ h2, p, li {
     padding: 0;
     opacity: 0;
     margin: 0 4%;
-    animation: none;
     animation: appear 0.4s ease 0.4s forwards;
     transform: translate(0, 0);
   }
@@ -304,6 +300,15 @@ h2, p, li {
   }
 }
 @media (max-width: 480px) {
+  .hero-text {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 100vw;
+  }
+  .hero-text .b-canvas {
+    transform: scale(0.9);
+    padding: 4px;
+  }
   .nav-links-mobile::after {
     transform: translate(calc((2rem + 2vw) * -0.6), 100%);
   }
@@ -365,7 +370,7 @@ h2, p, li {
   padding-top: calc(2rem + 2vw + 1.6rem + 0.6vw);
 }
 .portfolio-panel .content {
-  height: 32%;
+  height: calc(8.6rem + 1.8vw);
 }
 .portfolio-panel .content ol {
   list-style: none;
@@ -394,7 +399,6 @@ h2, p, li {
   right: 0;
   transform: translate(calc(100% + 3.6rem), 0);
   background: black;
-  width: 24vw;
   height: 24vw;
   padding: 24px;
   opacity: 0;
@@ -431,26 +435,18 @@ h2, p, li {
     flex-direction: column;
     cursor: pointer;
     padding: 6px 12px;
-    border-top: 1px solid transparent;
     border-top: 1px solid black;
   }
   .portfolio-panel .content ol li .video-data {
-    position: absolute;
     position: static;
-    right: 0;
     right: auto;
-    transform: translate(calc(100% + 3.6rem), 0);
     transform: translate(0, 0);
-    width: 24vw;
     width: 100%;
-    height: 24vw;
     height: 100%;
     margin: 12px 0;
-    opacity: 0;
     opacity: 1;
   }
   .portfolio-panel .content ol:hover li {
-    opacity: 0.4;
     opacity: 1;
   }
 }
