@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { NavState } from '../types/types';
 import { DistortionText } from 'react-text-fun';
 // import { SplitColorChannelText } from 'react-text-fun';
@@ -131,6 +132,13 @@ function App() {
 
   return (
     <div className='app' style={bodyStyle}>
+      <Helmet>
+        <meta property="og:title" content="Daniel Garcia | Digital Creator" />
+        <meta property="og:description" content="Daniel Garcia is a passionate digital creator." />
+        <meta property="og:image" content="./assets/open-graph.webp" />
+        <meta property="og:url" content="https://aaronsproject.net/" />
+      </Helmet>
+
       <nav>
         <ul className='nav-links' onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
