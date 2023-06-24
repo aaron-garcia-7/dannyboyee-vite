@@ -269,6 +269,10 @@ h2, p, li {
         div {
             transform: scale(0.6);
         }
+
+        &-active {
+            animation: fade 0.4s ease 0.4s forwards;               
+        }
     }
 
     .nav-links {
@@ -305,7 +309,7 @@ h2, p, li {
         }
         
         &-active {
-            // transform: translate(-50%, -58.2vh);
+            transform: translate(-50%, -58.2vh);
             // transform: translate(-50%, -58.2dvh);
             &::after {
                 animation: fade 0.6s ease 0.6s forwards;

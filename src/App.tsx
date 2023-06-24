@@ -82,9 +82,9 @@ function App() {
     if (window.innerWidth > 1440) {
       return 120;
     } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
-      return 92;
+      return 86;
     } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
-      return 72;
+      return 64;
     } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
       return 36;
     } else {
@@ -99,9 +99,9 @@ function App() {
       if (window.innerWidth > 1440) {
         setFontSize(120);
       } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
-        setFontSize(92);
+        setFontSize(86);
       } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
-        setFontSize(72);
+        setFontSize(64);
       } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
         setFontSize(36);
       } else {
