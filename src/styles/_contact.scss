@@ -18,11 +18,13 @@
 
         &-method {
             border-top: 1px solid black;
+            // border-top: 2px double black;
             width: calc(6rem + 6vw);
         }
         
         &-results {
             border-top: 1px solid black;
+            // border-top: 2px double black;
             width: calc(8rem + 8vw);
 
             a {
@@ -45,8 +47,10 @@
 @media (max-width: 852px) {
     .contact-panel {
         align-items: flex-start;
+        height: 60.6%;
 
         .contact-content {
+            padding-top: 0;
             &-block {
                 flex-direction: column;
                 margin-top: 0;
@@ -55,6 +59,7 @@
             }
     
             &-method {
+                padding-top: 12px;
                 width: 100%;
             }
             

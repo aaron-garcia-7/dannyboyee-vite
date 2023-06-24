@@ -138,7 +138,7 @@ function App() {
             style={navState.portfolio || navState.references || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button about-button'} 
             onClick={(e) => handleNav(e)}>
-              About {navState.about ? '-' : '+'}
+              About {navState.about ? '–' : '+'}
             </button>
           </li>
           <li className='nav-link-item'>
@@ -146,7 +146,7 @@ function App() {
             style={navState.about || navState.references || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button portfolio-button'} 
             onClick={(e) => handleNav(e)}>
-              Portfolio {navState.portfolio ? '-' : '+'}
+              Portfolio {navState.portfolio ? '–' : '+'}
             </button>
           </li>
           <li className='nav-link-item'>
@@ -154,7 +154,7 @@ function App() {
             style={navState.about || navState.portfolio || navState.contact ? inactiveBtnStyle : undefined} 
             className={'nav-button references-button'} 
             onClick={(e) => handleNav(e)}>
-              References {navState.references ? '-' : '+'}
+              References {navState.references ? '–' : '+'}
             </button>
           </li>
         </ul>
@@ -164,7 +164,7 @@ function App() {
           onMouseEnter={() => setShowMouseDiv(false)} 
           onMouseLeave={() => setShowMouseDiv(true)}
           onClick={(e) => handleNav(e)}>
-            Contact {navState.contact ? '-' : '+'}
+            Contact {navState.contact ? '–' : '+'}
         </button>
         <ul className={navState.nav ? 'nav-links-mobile nav-links-mobile-active' : 'nav-links-mobile'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
@@ -173,7 +173,7 @@ function App() {
             onClick={(e) => {
               handleNav(e)
             }}>
-              About {navState.about ? '-' : '+'}
+              About {navState.about ? '–' : '+'}
             </button>
           </li>
           <li className='nav-link-item'>
@@ -182,7 +182,7 @@ function App() {
             onClick={(e) => {
               handleNav(e)
             }}>
-              Portfolio {navState.portfolio ? '-' : '+'}
+              Portfolio {navState.portfolio ? '–' : '+'}
             </button>
           </li>
           <li className='nav-link-item'>
@@ -190,7 +190,7 @@ function App() {
             className={'nav-button contact-button'} 
             onClick={(e) => {
               handleNav(e)
-            }}>              Contact {navState.contact ? '-' : '+'}
+            }}>              Contact {navState.contact ? '–' : '+'}
             </button>
           </li>
         </ul>
@@ -201,7 +201,9 @@ function App() {
       {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
 
-      {/* Distortion Text */}
+      <h1 className='a11y'>Embracing trends. Setting the creative standard. Always leaving an impact.</h1>
+
+        {/* Distortion Text */}
       <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
         {/* <DistortionText text="Embracing Trends." id="fun-text-1"
           fill={'black'}
@@ -253,10 +255,12 @@ function App() {
           distortX={120}
           distortY={120}
           noiseAmplitude={0.009}
-          noiseVolatility={12}/>
+          noiseVolatility={12}
+          get2dContext={ctx => console.log(ctx)}
+          />
       </aside>
 
-      {/* Split Color Channel */}
+        {/* Split Color Channel */}
       {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
         <SplitColorChannelText text="Embracing trends" id="fun-text-1"
           fill={'black'}
@@ -290,7 +294,7 @@ function App() {
         /><br/>
       </aside> */}
 
-      {/* Flies Text */}
+        {/* Flies Text */}
       {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
         <FliesText text="Embracing Trends." id="fun-text-1"
           fill='black'
@@ -330,6 +334,7 @@ function App() {
         />
       </aside> */}
 
+        {/* Liquid Distorion Text */}
       {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
         <LiquidDistortionText text="Embracing Trends" id="fun-text-1"
           fontSize={window.innerWidth < 480 ? 28 : 48}

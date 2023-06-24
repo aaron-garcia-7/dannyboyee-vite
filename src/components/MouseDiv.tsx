@@ -27,18 +27,17 @@ const MouseDiv = () => {
     // <div style={mouseStyle} className="mouse-div">Close ✕</div>
     <div style={mouseStyle} className="mouse-div">
         <DistortionText text="Close ✕"
-          // fill={'black'}
           fill={'white'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          fontSize={128}
+          fontSize={window.innerWidth <= 1440 ? 128 : 86}
           speed={1.6} // How quickly you want the waves to move.
           rotation={90} // Degree of which way the wave goes. 90eg is left to right. 0 is bottom to top.
           distortX={120}
           distortY={120}
-          noiseAmplitude={0.2} // Control X-Axis. Higher integer = greater horizontal movement. i.e. 0.004
+          noiseAmplitude={0.2} // Higher integer = greater horizontal movement. i.e. 0.004
           noiseVolatility={2} // The higher, the fuzzier the text becomes i.e. 50
-          /><br /> 
+          />
     </div>
   )
 }

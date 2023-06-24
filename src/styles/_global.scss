@@ -33,7 +33,8 @@ $test: 1px dashed grey;
 
 body {
     background: white; // For mouseDiv
-    min-height: 36rem;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
 }
 
@@ -55,6 +56,10 @@ button {
     background: none;
     border: none;
     border-top: 1px solid black;
+    // border-top: 2px double black;
+    // @media (min-width: 1920px) {
+    //     border-top: 4px double black;
+    // }
     width: $button-width;
     height: $button-height;
     color: black;
@@ -68,13 +73,25 @@ a {
     color: black;
 }
 
+.a11y {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    user-select: none;
+    font-size: 8px;
+}
+
 .hero-text {
     position: absolute;
+    height: 100vh;
     top: 50%;
     right: 25vw;
     transform: translate(-20%, -50%);
     width: 25rem;
     display: flex;
+    justify-content: center;
     flex-direction: column;
 
     div {
@@ -153,7 +170,10 @@ h2, p, li {
     height: 100%;
     z-index: 1;
     transform: translate(0, -1%); // For animation below
-    animation: open-panel 0.12s ease forwards;
+    animation: open-panel 0.16s ease forwards;
+    @media (prefers-reduced-motion: reduced) {
+        animation: open-panel 0.16s ease forwards;
+    }
 
     @keyframes open-panel {
         to {
@@ -164,6 +184,7 @@ h2, p, li {
     .content {
         position: relative;
         border-top: 1px solid black;
+        // border-top: 2px double black;
         padding-top: 0.2rem;
         padding-bottom: 1.8rem;
         width: calc(24rem + 6vw);
@@ -176,7 +197,10 @@ h2, p, li {
             width: calc(24rem + 6vw);
             height: 100%;
             z-index: 2;
-            animation: show-panel-content 0.12s ease forwards;
+            animation: show-panel-content 0.16s ease forwards;
+            @media (prefers-reduced-motion: reduced) {
+                animation: show-panel-content 0s ease forwards;
+            }
         }
         @keyframes show-panel-content {
             to {
@@ -203,6 +227,9 @@ h2, p, li {
     mix-blend-mode: exclusion;
     .b-canvas {
         transform: scale(0.12);
+        @media (min-width: 1441px) {
+            transform: scale(0.24);
+        }
         &:nth-of-type(2) {
             display: none;
         }
@@ -271,7 +298,10 @@ h2, p, li {
         }
 
         &-active {
-            animation: fade 0.4s ease 0.4s forwards;               
+            @media (prefers-reduced-motion: reduced) {
+                animation: fade 0s ease 0.4s forwards;
+            }
+            animation: fade 0.4s ease 0.4s forwards;
         }
     }
 
@@ -281,6 +311,7 @@ h2, p, li {
 
     .nav-links-mobile {
         border-top: 1px solid black;
+        // border-top: 2px double black;
         background: white;
         padding-bottom: 0px;
         position: absolute;
@@ -291,9 +322,11 @@ h2, p, li {
         flex-direction: row;
         justify-content: space-between;
         width: 92%;
-        transition: 0.5s $ease1;
         z-index: 2;
         cursor: default;
+        @media (prefers-reduced-motion: no-preference){
+            transition: 0.5s $ease1;
+        }
 
         &::after {
             content: "";
@@ -311,6 +344,7 @@ h2, p, li {
         &-active {
             transform: translate(-50%, -58.2vh);
             // transform: translate(-50%, -58.2dvh);
+
             &::after {
                 animation: fade 0.6s ease 0.6s forwards;
             }
@@ -388,7 +422,19 @@ h2, p, li {
             transform: translate(calc($body-padding * -0.6), 100%);
         }
         &-active {
-            transform: translate(-50%, -52vh);
+            transform: translate(-50%, -50.4vh);
         }
+    }
+}
+
+@-moz-document url-prefix() {
+    .nav-links-mobile {
+        &-active {
+            transform: translate(-50%, -68vh);
+        }
+    }
+
+    .panel {
+        height: 50%;
     }
 }
