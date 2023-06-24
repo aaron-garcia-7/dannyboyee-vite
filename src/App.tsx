@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { NavState } from '../types/types';
 import { DistortionText } from 'react-text-fun';
+// import { SplitColorChannelText } from 'react-text-fun';
+// import { FliesText } from 'react-text-fun';
+// import { LiquidDistortionText } from 'react-text-fun';
 // import { DistortionText, SplitColorChannelText, FliesText, LiquidDistortionText } from 'react-text-fun';
 import './styles/styles.css';
+import './fonts/Satoshi-Variable.woff2';
 import logo from '../public/logo-dark.svg';
 
 import About from './components/About';
@@ -55,8 +59,7 @@ function App() {
             contact: false,
         }))
     }
-}
-
+  }
 
   const [showMouseDiv, setShowMouseDiv] = useState(false);
 
@@ -71,19 +74,9 @@ function App() {
   const inactiveBtnStyle: React.CSSProperties = {
     opacity: 0.2,
   }
-
   const bodyStyle = {
     cursor: navState.nav ? 'none' : 'default',
   }
-
-  // let [flies, setFlies] = useState(0.6);
-
-  // const updateFlies = () => {
-  //   console.log(flies);
-    
-  //   setFlies(prev => prev + 1);
-  //   console.log(flies);
-  // }
 
   return (
     <div className='app' style={bodyStyle}>
@@ -122,7 +115,6 @@ function App() {
           onClick={(e) => handleNav(e)}>
             Contact {navState.contact ? '-' : '+'}
         </button>
-
         <ul className={navState.nav ? 'nav-links-mobile nav-links-mobile-active' : 'nav-links-mobile'} onMouseEnter={() => setShowMouseDiv(false)} onMouseLeave={() => setShowMouseDiv(true)}>
           <li className='nav-link-item'>
             <button 
@@ -158,80 +150,161 @@ function App() {
       {navState.references && <References setShowMouseDiv={setShowMouseDiv} />}
       {navState.contact && <Contact setShowMouseDiv={setShowMouseDiv} />}
 
+      {/* Distortion Text */}
       <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
-        <DistortionText text="Embracing Trends." id="fun-text-1"
+        {/* <DistortionText text="Embracing Trends." id="fun-text-1"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
           fontSize={window.innerWidth < 480 ? 28 : 48}
-          speed={0.8}
-          rotation={0.8}
-          distortX={0.2}
-          distortY={0.8}
-          noiseAmplitude={0.02}
-          noiseVolatility={1}/><br />
+          speed={0.2} // How quickly you want the waves to move.
+          rotation={5} // Controls direction of waves across the text. i.e. < 10 = Vertical && 50 = Horizontal
+            //  spread={0.025} // Not listed in NPM. Listed in Original Blotter Docs. 
+            //  count={2} // Not listed in NPM. I'm guessing with the prop name.
+          distortX={0}
+          distortY={0}
+          noiseAmplitude={0.009} // Control X-Axis. Higher integer = greater horizontal movement. i.e. 0.004
+          noiseVolatility={12} // The higher, the fuzzier the text becomes i.e. 50
+          /><br />  */}
+
+          <DistortionText text="Embracing Trends." id="fun-text-1"
+          fill={'black'}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          speed={0.2} // How quickly you want the waves to move.
+          rotation={45} // Degree of which way the wave goes. 90eg is left to right. 0 is bottom to top.
+          distortX={120}
+          distortY={120}
+          noiseAmplitude={0.009} // Control X-Axis. Higher integer = greater horizontal movement. i.e. 0.004
+          noiseVolatility={12} // The higher, the fuzzier the text becomes i.e. 50
+          /><br /> 
 
           <DistortionText text="Setting the Creative Standard." id="fun-text-2"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
           fontSize={window.innerWidth < 480 ? 28 : 48}
-          speed={0.8}
-          rotation={0.8}
-          distortX={0.2}
-          distortY={0.8}
-          noiseAmplitude={0.02}
-          noiseVolatility={1}/><br />
+          speed={0.2}
+          rotation={45}
+          distortX={120}
+          distortY={120}
+          noiseAmplitude={0.009}
+          noiseVolatility={12}/><br />
 
           <DistortionText text="Always Leaving an Impact." id="fun-text-3"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
           fontSize={window.innerWidth < 480 ? 28 : 48}
-          speed={0.8}
-          rotation={0.8}
-          distortX={0.2}
-          distortY={0.8}
-          noiseAmplitude={0.02}
-          noiseVolatility={1}/><br />
+          speed={0.2}
+          rotation={45}
+          distortX={120}
+          distortY={120}
+          noiseAmplitude={0.009}
+          noiseVolatility={12}/>
+      </aside>
 
-        {/* <SplitColorChannelText text="Embracing Trends"
+      {/* Split Color Channel */}
+      {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
+        <SplitColorChannelText text="Embracing trends" id="fun-text-1"
           fill={'black'}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          rotation={12}
-          rgbOffset={0.08}
+          rotation={45}
+          rgbOffset={0.05}
           addBlur={true}
           addNoise={true}
-        /><br/> */}
+        /><br/>
+        <SplitColorChannelText text="Setting the Creative Standard" id="fun-text-2"
+          fill={'black'}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          rotation={45}
+          rgbOffset={0.05}
+          addBlur={true}
+          addNoise={true}
+        /><br/>
+        <SplitColorChannelText text="Always Leaving an Impact" id="fun-text-3"
+          fill={'black'}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          rotation={45}
+          rgbOffset={0.05}
+          addBlur={true}
+          addNoise={true}
+        /><br/>
+      </aside> */}
 
-        {/* <FliesText text="Embracing Trends."
+      {/* Flies Text */}
+      {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
+        <FliesText text="Embracing Trends." id="fun-text-1"
           fill='black'
-          fontSize={56}
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           fontFamily="Sans-serif"
-          fontWeight={900}
-          cellRadius={0.6}
-          cellWidth={0.02}
-          speed={2}
+          fontWeight={100}
+          cellRadius={window.innerWidth < 480 ? 1 : 2}
+          cellWidth={0.025}
+          speed={4}
           dodge={true}
           dodgeY={0.02}
           dodgeSpread={0.02}
-        /> */}
+        /><br/>
+        <FliesText text="Setting the Creative Standard." id="fun-text-2"
+          fill='black'
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily="Sans-serif"
+          fontWeight={100}
+          cellRadius={window.innerWidth < 480 ? 1 : 2}
+          cellWidth={0.025}
+          speed={4}
+          dodge={true}
+          dodgeY={0.02}
+          dodgeSpread={0.02}
+        /><br/>
+        <FliesText text="Always Leaving an Impact." id="fun-text-3"
+          fill='black'
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily="Sans-serif"
+          fontWeight={100}
+          cellRadius={window.innerWidth < 480 ? 1 : 2}
+          cellWidth={0.025}
+          speed={4}
+          dodge={true}
+          dodgeY={0.02}
+          dodgeSpread={0.02}
+        />
+      </aside> */}
 
-        {/* <LiquidDistortionText text="Embracing Trends"
-          fill={'black'}
+      {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
+        <LiquidDistortionText text="Embracing Trends" id="fun-text-1"
+          fontSize={window.innerWidth < 480 ? 28 : 48}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          speed={0.12}
-          volatility={0.06}
-        /> */}
-
-        <h1>
-          {/* Embracing Trends.<br /> */}
-          {/* Setting the Creative Standard.<br /> */}
-          {/* Always Leaving an Impact.<br /> */}
-        </h1>
-      </aside>
+          fill={'black'}
+          speed={0.08}
+          volatility={0.04}
+        /><br/>
+        <LiquidDistortionText text="Setting the Creative Standard" id="fun-text-2"
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          fill={'black'}
+          speed={0.08}
+          volatility={0.04}
+        /><br/>
+        <LiquidDistortionText text="Always Leaving an Impact" id="fun-text-3"
+          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontFamily={"Sans-serif"}
+          fontWeight={100}
+          fill={'black'}
+          speed={0.08}
+          volatility={0.04}
+        />
+      </aside> */}
 
       <figure className='logo-container'>
         <img src={logo} alt="Logo" />

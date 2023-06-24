@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Satoshi';
-    src: url(../fonts/Satoshi-Variable.woff2);
+    src: url(../fonts/Satoshi-Variable.woff2) format('woff2');
 }
 
 $satoshi: 'Satoshi', sans-serif;
@@ -72,7 +72,7 @@ a {
     position: absolute;
     top: 50%;
     right: 25vw;
-    transform: translate(0, -50%);
+    transform: translate(-20%, -50%);
     width: 25rem;
 
     div {
@@ -299,7 +299,8 @@ h2, p, li {
         }
         
         &-active {
-            transform: translate(-50%, -58.2vh);
+            // transform: translate(-50%, -58.2vh);
+            // transform: translate(-50%, -58.2dvh);
             &::after {
                 animation: fade 0.6s ease 0.6s forwards;
             }
@@ -382,6 +383,7 @@ h2, p, li {
         }
         &-active {
             transform: translate(-50%, -52vh);
+            // transform: translate(-50%, -60vh);
         }
     }
 }
