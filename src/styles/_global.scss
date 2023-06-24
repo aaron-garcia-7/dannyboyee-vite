@@ -74,35 +74,31 @@ a {
     right: 25vw;
     transform: translate(-20%, -50%);
     width: 25rem;
+    display: flex;
+    flex-direction: column;
 
     div {
-        position: absolute; // For #fun-text beloww
+        transform: scale(0.4);
     }
     #fun-text-1 {
-        top: 50%;
-        transform: translate(0, -112%);
+        transform-origin: 0 150%;
     }
     #fun-text-2 {
-        bottom: 50%;
-        transform: translate(0, 50%);
+        transform-origin: 0 50%;
     }
     #fun-text-3 {
-        bottom: 50%;
-        transform: translate(0, 112%);
+        transform-origin: 0 -50%;
     }
 
     .b-canvas {
-        transform: scale(1.2);
-        margin: 0 24px;
         transform-origin: left center;
-        padding: 12px;
         &:nth-of-type(2) {
             display: none;
         }
     }
 }
 
-// Replaced with React-text-fun
+// Non-blotter h1 ... Boring & Accessible
 // h1 {
 //     font-size: $large-text;
 //     font-weight: 200;
@@ -196,14 +192,32 @@ h2, p, li {
     }
 }
 
+// blotter
 .mouse-div {
-    width: 86px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 3;
-    color: white;
     mix-blend-mode: exclusion;
+    .b-canvas {
+        transform: scale(0.12);
+        &:nth-of-type(2) {
+            display: none;
+        }
+    }
 }
+
+// Non-blotter
+// .mouse-div {
+//     width: 86px;
+//     pointer-events: none;
+//     transform: translate(-50%, -50%);
+//     z-index: 3;
+//     color: white;
+//     mix-blend-mode: exclusion;
+// }
 
 //
 // Media Queries
@@ -211,9 +225,7 @@ h2, p, li {
 
 @media (max-width: 1440px) {
     .hero-text {
-        .b-canvas {
-            transform: scale(1);
-        }
+        width: 18rem;
     }
 }
 
@@ -223,10 +235,9 @@ h2, p, li {
     }
 
     .hero-text {
-        right: 32vw;
-        .b-canvas {
-            transform: scale(0.9);
-        }
+        right: 50vw;
+        transform: translate(50%, -50%);
+        width: 12rem;
     }
 
     .logo-container {
@@ -252,16 +263,11 @@ h2, p, li {
     }
 
     .hero-text {
-        right: 25%;
-        transform: translate(-50%, -50%);
-        width: 16rem;
-
-        .b-canvas {
-            transform: scale(0.75);
-        }
-
-        &-active {
-            animation: fade 0.4s ease 0.4s forwards;
+        width: 100vw;
+        padding: $body-padding-tablet;
+    
+        div {
+            transform: scale(0.6);
         }
     }
 
@@ -367,13 +373,9 @@ h2, p, li {
 }
 
 @media (max-width: 480px) {
-    .hero-text {
-        right: 50%;
-        transform: translate(50%, -50%);
-        width: 100vw;
-        .b-canvas {
-            transform: scale(0.9);
-            padding: 4px;
+    .hero-text {    
+        div {
+            transform: scale(0.8);
         }
     }
 
@@ -383,7 +385,6 @@ h2, p, li {
         }
         &-active {
             transform: translate(-50%, -52vh);
-            // transform: translate(-50%, -60vh);
         }
     }
 }

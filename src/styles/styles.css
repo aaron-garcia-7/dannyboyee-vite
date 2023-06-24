@@ -52,27 +52,23 @@ a {
   right: 25vw;
   transform: translate(-20%, -50%);
   width: 25rem;
+  display: flex;
+  flex-direction: column;
 }
 .hero-text div {
-  position: absolute;
+  transform: scale(0.4);
 }
 .hero-text #fun-text-1 {
-  top: 50%;
-  transform: translate(0, -112%);
+  transform-origin: 0 150%;
 }
 .hero-text #fun-text-2 {
-  bottom: 50%;
-  transform: translate(0, 50%);
+  transform-origin: 0 50%;
 }
 .hero-text #fun-text-3 {
-  bottom: 50%;
-  transform: translate(0, 112%);
+  transform-origin: 0 -50%;
 }
 .hero-text .b-canvas {
-  transform: scale(1.2);
-  margin: 0 24px;
   transform-origin: left center;
-  padding: 12px;
 }
 .hero-text .b-canvas:nth-of-type(2) {
   display: none;
@@ -161,17 +157,24 @@ h2, p, li {
 }
 
 .mouse-div {
-  width: 86px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 3;
-  color: white;
   mix-blend-mode: exclusion;
+}
+.mouse-div .b-canvas {
+  transform: scale(0.12);
+}
+.mouse-div .b-canvas:nth-of-type(2) {
+  display: none;
 }
 
 @media (max-width: 1440px) {
-  .hero-text .b-canvas {
-    transform: scale(1);
+  .hero-text {
+    width: 18rem;
   }
 }
 @media (max-width: 1220px) {
@@ -179,10 +182,9 @@ h2, p, li {
     padding: calc(1.2rem + 1.2vw);
   }
   .hero-text {
-    right: 32vw;
-  }
-  .hero-text .b-canvas {
-    transform: scale(0.9);
+    right: 50vw;
+    transform: translate(50%, -50%);
+    width: 12rem;
   }
   .logo-container {
     bottom: calc(1.2rem + 1.2vw);
@@ -203,15 +205,11 @@ h2, p, li {
     overflow: hidden;
   }
   .hero-text {
-    right: 25%;
-    transform: translate(-50%, -50%);
-    width: 16rem;
+    width: 100vw;
+    padding: calc(1.2rem + 1.2vw);
   }
-  .hero-text .b-canvas {
-    transform: scale(0.75);
-  }
-  .hero-text-active {
-    animation: fade 0.4s ease 0.4s forwards;
+  .hero-text div {
+    transform: scale(0.6);
   }
   .nav-links {
     display: none;
@@ -297,14 +295,8 @@ h2, p, li {
   }
 }
 @media (max-width: 480px) {
-  .hero-text {
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 100vw;
-  }
-  .hero-text .b-canvas {
-    transform: scale(0.9);
-    padding: 4px;
+  .hero-text div {
+    transform: scale(0.8);
   }
   .nav-links-mobile::after {
     transform: translate(calc((2rem + 2vw) * -0.6), 100%);

@@ -78,6 +78,57 @@ function App() {
     cursor: navState.nav ? 'none' : 'default',
   }
 
+  const [fontSize, setFontSize] = useState(() => {
+    if (window.innerWidth > 1440) {
+      return 120;
+    } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
+      return 92;
+    } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
+      return 72;
+    } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
+      return 36;
+    } else {
+      return 28;
+    }
+  });
+
+  const [previousWidth, setPreviousWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1440) {
+        setFontSize(120);
+      } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
+        setFontSize(92);
+      } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
+        setFontSize(72);
+      } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
+        setFontSize(36);
+      } else {
+        setFontSize(28);
+      }
+
+      const currentWidth = window.innerWidth;
+
+      if (
+        (previousWidth > 1440 && currentWidth <= 1440) ||
+        (previousWidth <= 1440 && currentWidth > 1440) ||
+        (previousWidth <= 1024 && currentWidth > 1024) ||
+        (previousWidth > 1024 && currentWidth <= 1024)
+      ) {
+        window.location.reload();
+      }
+  
+      setPreviousWidth(currentWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className='app' style={bodyStyle}>
       <nav>
@@ -171,32 +222,32 @@ function App() {
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontSize={fontSize}
           speed={0.2} // How quickly you want the waves to move.
           rotation={45} // Degree of which way the wave goes. 90eg is left to right. 0 is bottom to top.
           distortX={120}
           distortY={120}
           noiseAmplitude={0.009} // Control X-Axis. Higher integer = greater horizontal movement. i.e. 0.004
           noiseVolatility={12} // The higher, the fuzzier the text becomes i.e. 50
-          /><br /> 
+          />
 
           <DistortionText text="Setting the Creative Standard." id="fun-text-2"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontSize={fontSize}
           speed={0.2}
           rotation={45}
           distortX={120}
           distortY={120}
           noiseAmplitude={0.009}
-          noiseVolatility={12}/><br />
+          noiseVolatility={12}/>
 
           <DistortionText text="Always Leaving an Impact." id="fun-text-3"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
-          fontSize={window.innerWidth < 480 ? 28 : 48}
+          fontSize={fontSize}
           speed={0.2}
           rotation={45}
           distortX={120}
