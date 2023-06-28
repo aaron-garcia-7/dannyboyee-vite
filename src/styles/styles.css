@@ -57,34 +57,16 @@ a {
   font-size: 8px;
 }
 
-.hero-text {
+.hero-text-simple {
   position: absolute;
-  height: 100vh;
   top: 50%;
-  right: 25vw;
-  transform: translate(-20%, -50%);
-  width: 25rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  right: 0;
+  transform: translate(-40%, -50%);
 }
-.hero-text div {
-  transform: scale(0.4);
-}
-.hero-text #fun-text-1 {
-  transform-origin: 0 150%;
-}
-.hero-text #fun-text-2 {
-  transform-origin: 0 50%;
-}
-.hero-text #fun-text-3 {
-  transform-origin: 0 -50%;
-}
-.hero-text .b-canvas {
-  transform-origin: left center;
-}
-.hero-text .b-canvas:nth-of-type(2) {
-  display: none;
+
+h1 {
+  font-size: calc(0.8rem + 2vw);
+  font-weight: 200;
 }
 
 h2, p, li {
@@ -180,39 +162,17 @@ h2, p, li {
 }
 
 .mouse-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 86px;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 3;
+  color: white;
   mix-blend-mode: exclusion;
 }
-.mouse-div .b-canvas {
-  transform: scale(0.12);
-}
-@media (min-width: 1441px) {
-  .mouse-div .b-canvas {
-    transform: scale(0.24);
-  }
-}
-.mouse-div .b-canvas:nth-of-type(2) {
-  display: none;
-}
 
-@media (max-width: 1440px) {
-  .hero-text {
-    width: 18rem;
-  }
-}
 @media (max-width: 1220px) {
   .app {
     padding: calc(1.2rem + 1.2vw);
-  }
-  .hero-text {
-    right: 50vw;
-    transform: translate(50%, -50%);
-    width: 12rem;
   }
   .logo-container {
     bottom: calc(1.2rem + 1.2vw);
@@ -232,19 +192,12 @@ h2, p, li {
   .app {
     overflow: hidden;
   }
-  .hero-text {
-    width: 100vw;
-    padding: calc(1.2rem + 1.2vw);
-  }
-  .hero-text div {
-    transform: scale(0.6);
-  }
-  .hero-text-active {
+  .hero-text-simple-active {
     animation: fade 0.4s ease 0.4s forwards;
   }
 }
 @media (max-width: 852px) and (prefers-reduced-motion: reduced) {
-  .hero-text-active {
+  .hero-text-simple-active {
     animation: fade 0s ease 0.4s forwards;
   }
 }
@@ -256,6 +209,7 @@ h2, p, li {
 @media (max-width: 852px) {
   .nav-links-mobile {
     border-top: 1px solid black;
+    border-bottom: 1px solid black;
     background: white;
     padding-bottom: 0px;
     position: absolute;
@@ -354,10 +308,23 @@ h2, p, li {
   .panel .content::before {
     display: none;
   }
+  .panel .content:first-of-type {
+    border: none;
+  }
 }
 @media (max-width: 480px) {
-  .hero-text div {
-    transform: scale(0.8);
+  .logo-container {
+    bottom: auto;
+    top: calc(1.2rem + 1.2vw);
+    left: calc((1.2rem + 1.2vw) / 2);
+  }
+  .hero-text-simple {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: calc(100vw - (1.2rem + 1.2vw));
+  }
+  .hero-text-simple h1 {
+    font-size: 24px;
   }
   .nav-links-mobile::after {
     transform: translate(calc((2rem + 2vw) * -0.6), 100%);
@@ -374,15 +341,44 @@ h2, p, li {
     height: 50%;
   }
 }
-.about-panel-portrait {
+.about-panel-portrait-container {
   position: absolute;
   top: 0;
   right: 4rem;
   transform: translate(-20%, calc(2rem + 2vw));
-  width: calc(8rem + 18vw);
+  width: calc(6rem + 22vw);
   max-width: 520px;
+  display: flex;
+  gap: 8px;
 }
-.about-panel-portrait img {
+.about-panel-portrait-container .about-panel-portrait {
+  position: relative;
+}
+.about-panel-portrait-container .about-panel-portrait:nth-of-type(1) {
+  flex: 2 0 0;
+}
+.about-panel-portrait-container .about-panel-portrait:nth-of-type(2) {
+  flex: 1 0 0;
+  height: 100%;
+}
+.about-panel-portrait-container .about-panel-portrait::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 1;
+  animation: show-panel-content 0.16s ease forwards;
+}
+@media (prefers-reduced-motion: reduced) {
+  .about-panel-portrait-container .about-panel-portrait::before {
+    animation: show-panel-content 0s ease forwards;
+  }
+}
+.about-panel-portrait-container .about-panel-portrait img {
+  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -411,9 +407,9 @@ h2, p, li {
 }
 
 @media (max-width: 1220px) {
-  .about-panel-portrait {
+  .about-panel-portrait-container {
     right: 0;
-    width: calc(8rem + 12vw);
+    width: calc(6rem + 18vw);
     transform: translate(-12%, calc(1.2rem + 1.2vw));
   }
 }
@@ -599,5 +595,8 @@ h2, p, li {
     border: none;
     width: 100%;
     padding-left: 12px;
+  }
+  .contact-panel .first-contact-method {
+    border: none;
   }
 }/*# sourceMappingURL=styles.css.map */

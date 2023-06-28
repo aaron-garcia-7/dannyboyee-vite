@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { NavState } from '../types/types';
-import { DistortionText } from 'react-text-fun';
+// import { DistortionText } from 'react-text-fun';
 // import { SplitColorChannelText } from 'react-text-fun';
 // import { FliesText } from 'react-text-fun';
 // import { LiquidDistortionText } from 'react-text-fun';
@@ -79,56 +79,57 @@ function App() {
     cursor: navState.nav ? 'none' : 'default',
   }
 
-  const [fontSize, setFontSize] = useState(() => {
-    if (window.innerWidth > 1440) {
-      return 120;
-    } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
-      return 86;
-    } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
-      return 64;
-    } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
-      return 36;
-    } else {
-      return 28;
-    }
-  });
+  // BLOTTER RESIZE LOGIC
+  // const [fontSize, setFontSize] = useState(() => {
+  //   if (window.innerWidth > 1440) {
+  //     return 120;
+  //   } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
+  //     return 86;
+  //   } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
+  //     return 64;
+  //   } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
+  //     return 36;
+  //   } else {
+  //     return 28;
+  //   }
+  // });
 
-  const [previousWidth, setPreviousWidth] = useState(window.innerWidth);
+  // const [previousWidth, setPreviousWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 1440) {
-        setFontSize(120);
-      } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
-        setFontSize(86);
-      } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
-        setFontSize(64);
-      } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
-        setFontSize(36);
-      } else {
-        setFontSize(28);
-      }
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth > 1440) {
+  //       setFontSize(120);
+  //     } else if (window.innerWidth <= 1440 && window.innerWidth > 1024) {
+  //       setFontSize(86);
+  //     } else if (window.innerWidth <= 1024 && window.innerWidth > 852) {
+  //       setFontSize(64);
+  //     } else if (window.innerWidth <= 852 && window.innerWidth > 480) {
+  //       setFontSize(36);
+  //     } else {
+  //       setFontSize(28);
+  //     }
 
-      const currentWidth = window.innerWidth;
+  //     const currentWidth = window.innerWidth;
 
-      if (
-        (previousWidth > 1440 && currentWidth <= 1440) ||
-        (previousWidth <= 1440 && currentWidth > 1440) ||
-        (previousWidth <= 1024 && currentWidth > 1024) ||
-        (previousWidth > 1024 && currentWidth <= 1024)
-      ) {
-        window.location.reload();
-      }
+  //     if (
+  //       (previousWidth > 1440 && currentWidth <= 1440) ||
+  //       (previousWidth <= 1440 && currentWidth > 1440) ||
+  //       (previousWidth <= 1024 && currentWidth > 1024) ||
+  //       (previousWidth > 1024 && currentWidth <= 1024)
+  //     ) {
+  //       window.location.reload();
+  //     }
   
-      setPreviousWidth(currentWidth);
-    };
+  //     setPreviousWidth(currentWidth);
+  //   };
 
-    window.addEventListener('resize', handleResize);
+  //   window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   return (
     <div className='app' style={bodyStyle}>
@@ -211,8 +212,16 @@ function App() {
 
       <h1 className='a11y'>Embracing trends. Setting the creative standard. Always leaving an impact.</h1>
 
+      <aside className={navState.nav ? "hero-text-simple hero-text-simple-active" : 'hero-text-simple'}>
+        <h1>
+          Embracing Trends<br/>
+          Setting the Creative Standard<br/>
+          Always Leaving an Impact
+        </h1>
+      </aside>
+
         {/* Distortion Text */}
-      <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
+      {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}> */}
         {/* <DistortionText text="Embracing Trends." id="fun-text-1"
           fill={'black'}
           fontFamily={"Sans-serif"}
@@ -228,7 +237,7 @@ function App() {
           noiseVolatility={12} // The higher, the fuzzier the text becomes i.e. 50
           /><br />  */}
 
-          <DistortionText text="Embracing Trends." id="fun-text-1"
+          {/* <DistortionText text="Embracing Trends." id="fun-text-1"
           fill={'black'}
           fontFamily={"Sans-serif"}
           fontWeight={100}
@@ -265,8 +274,8 @@ function App() {
           noiseAmplitude={0.009}
           noiseVolatility={12}
           get2dContext={ctx => console.log(ctx)}
-          />
-      </aside>
+          /> */}
+      {/* </aside> */}
 
         {/* Split Color Channel */}
       {/* <aside className={navState.nav ? "hero-text hero-text-active" : "hero-text"}>
